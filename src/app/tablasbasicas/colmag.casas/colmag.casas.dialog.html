@@ -1,0 +1,54 @@
+<mat-card>
+    <mat-card-header>
+        <div class="d-flex align-items-center m-card">
+            <mat-card-title class="mb-0">{{ 'colmagCasas._titulo' | translate }}</mat-card-title>
+            <span [ngStyle]="{'margin': 'auto'}" ></span>
+            <mat-icon *ngIf="colmagCasasForm.invalid" [matTooltip]="getErrorMessages()">error_outline</mat-icon>
+            <mat-icon mat-dialog-close>close</mat-icon>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="colmagCasasForm" (ngSubmit)="onSubmit(colmagCasasForm.value)" autocomplete="off">
+            <div class="dialog-content">
+                <div class="row">
+                    <div class="col-sm-12 col-12">
+                        <mat-form-field>
+                            <input matInput type="text"
+                                    formControlName="ColmagCasaNombre"
+                                    placeholder="{{ 'colmagCasas.ColmagCasaNombre' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colmagCasasForm.controls.ColmagCasaNombre.invalid && colmagCasasForm.controls.ColmagCasaNombre.touched">{{ "colmagCasas.ColmagCasaNombreError" | translate }}</mat-error>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-12">
+                        <mat-form-field>
+                            <textarea matInput 
+                                    formControlName="ColmagCasaDescripcion"
+                                    placeholder="{{ 'colmagCasas.ColmagCasaDescripcion' | translate }}?" ></textarea>
+                        </mat-form-field>
+                        <mat-error *ngIf="colmagCasasForm.controls.ColmagCasaDescripcion.invalid && colmagCasasForm.controls.ColmagCasaDescripcion.touched">{{ "colmagCasas.ColmagCasaDescripcionError" | translate }}</mat-error>
+                    </div>
+              </div>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <mat-spinner *ngIf="_proc" [diameter]="30" class="mb-3 mx-auto"></mat-spinner>
+        <button mat-button
+            (click)="onSubmit(colmagCasasForm.value);"
+            [disabled]="!colmagCasasForm.valid">
+            {{ "colmagCasas._guardar" | translate  }}
+        </button>
+        <button mat-button *ngIf="originalColmagCasas._estado === 'O'"
+            (click)="onDelete(colmagCasasForm.value);"
+            [disabled]="!colmagCasasForm.valid">
+            {{ "colmagCasas._eliminar" | translate  }}
+        </button>
+        <button
+            mat-button
+            mat-dialog-close>
+            {{ "colmagCasas._cancelar" | translate  }}
+        </button>
+    </mat-card-actions>
+</mat-card>

@@ -1,8 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './app.shared.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TranslateService } from '@ngx-translate/core';
+
+import { httpInterceptorProviders  } from './_helpers';
+
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { getPaginatorIntl } from './components/paginator.i18n.provider';
+import { BlockUIModule } from 'ng-block-ui';
 
 @NgModule({
   declarations: [
@@ -10,9 +21,18 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    SharedModule.forRoot(),
+    BlockUIModule.forRoot(),
   ],
-  providers: [],
+  entryComponents: [],
+  providers: [ 
+    httpInterceptorProviders,
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
+    { provide: MatPaginatorIntl, useFactory: getPaginatorIntl, deps: [TranslateService] }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
