@@ -17,7 +17,7 @@ export class AuthenticationService {
         this.currentUserSubject = new BehaviorSubject<User>(user);
         this.currentUser = this.currentUserSubject.asObservable();
 
-        let token = this.getParamValueQueryString("token");
+        let token = "ABC123";
 
         if(token) {
             user = new User();
@@ -28,7 +28,7 @@ export class AuthenticationService {
     }
 
     public get currentUserValue(): User {
-        return this.currentUserSubject.value;
+        return this.currentUserSubject.value ;
     }
 
     logout() {

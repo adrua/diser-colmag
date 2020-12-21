@@ -154,5 +154,27 @@
 		"_eliminar": "Eliminar",
 		"_cancelar": "Cancelar",
 		"_titulo": "Casas.COLMAG"
+	},
+	"colmagInscripciones": {
+		"ColmagInscripcionId": "Id",
+		"ColmagInscripcionIdError": "Id inválido",
+		"ColmagInscripcionFecha": "Fecha",
+		"ColmagInscripcionFechaError": "Fecha inválido",
+		"ColmagInscripcionNombre": "Nombre",
+		"ColmagInscripcionNombreError": "Nombre inválido",
+		"ColmagInscripcionApellido": "Apellido",
+		"ColmagInscripcionApellidoError": "Apellido inválido",
+		"ColmagInscripcionCedula": "Cedula",
+		"ColmagInscripcionCedulaError": "Cedula inválido",
+		"ColmagInscripcionEdad": "Edad",
+		"ColmagInscripcionEdadError": "Edad inválido",
+		"ColmagCasaId": "Casa",
+		"ColmagCasaIdError": "Casa inválido",
+		"ColmagCasaNombre": "Casa",
+		"ColmagCasaNombreError": "Casa inválido",
+		"_guardar": "Salvar y Seguir",
+		"_eliminar": "Eliminar",
+		"_cancelar": "Cancelar",
+		"_titulo": "Inscripciones.COLMAG"
 	}
 }
