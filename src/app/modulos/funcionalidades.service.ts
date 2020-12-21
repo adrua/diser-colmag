@@ -27,8 +27,8 @@ export class FuncionalidadesService {
             "children": [
               {
                 "id": 251,
-                "name": "PCR_ClasificacionSolicitud", 
-                "descripcion": "Clasificación Solicitud",
+                "name": "COLMAG_Casas", 
+                "descripcion": "Casas",
                 "check": true,
                 "children": []
               }

@@ -4,7 +4,7 @@ import { AuthGuard } from './_helpers';
 
 const routes: Routes = [
   {
-    path: 'PCR', 
+    path: 'Inscripciones', 
     loadChildren: () => import('./home/home.module').then(mod => mod.HomeModule),
     canActivate: [AuthGuard]
   },

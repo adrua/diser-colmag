@@ -14,7 +14,7 @@ export class AppComponent  {
 
   currentUser: any;
 
-  title = `PCR v${environment.VERSION}`;
+  title = `Inscripciones v${environment.VERSION}`;
   
   constructor(private authenticationService: AuthenticationService,
         readonly translate: TranslateService) {
