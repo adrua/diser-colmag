@@ -30,7 +30,7 @@ describe('ColMagVaritaMagicaDialog', () => {
         ColMagVaritaMagicaComp: '', //convert(varchar(max),ColMagPersonajeId) || '/' || convert(varchar(max),ColMagVaritaMagicaId) 
         Madera: `holly`,
         ColMagVaritaMagicaAlma: `phoenix feather`,
-        ColMagVaritaMagicaLongitud: 11,
+        ColMagVaritaMagicaLongitud: 11.00,
         _estado: ''
     };
 

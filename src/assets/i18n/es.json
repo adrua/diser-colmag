@@ -221,7 +221,9 @@
 		"ColMagPersonajeImagen": "Imagen",
 		"ColMagPersonajeImagenError": "Imagen inválido",
 		"AnoNacimiento": "Año Nacimiento",
-		"AnoNacimientoError": "Año Nacimiento inválido"
+		"AnoNacimientoError": "Año Nacimiento inválido",
+		"ColMagPersonajeAnoNacimiento": "Año Nacimiento",
+		"ColMagPersonajeAnoNacimientoError": "Año Nacimiento inválido"
 	},
 	"colMagVaritaMagica": {
 		"ColMagPersonajeId": "Id",

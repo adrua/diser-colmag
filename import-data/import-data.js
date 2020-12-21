@@ -62,15 +62,17 @@ let casas = {
 let id = 0 
 
 let personajeAggregar = async (personaje) => {
-    let [dia, mes, ano] = personaje.dateOfBirth.split("-")
+    let [dia, mes, ano] = personaje.dateOfBirth.split("-");
+    let fecha  = (dia) ? `${ano}-${mes}-${dia}` : null;
+
     const _personaje = {
         ColMagPersonajeId: ++id,
         ColMagPersonajeNombre: personaje.name,
         ColMagPersonajeEspecie: personaje.species,
         Genero: personaje.gender,
-        ColMagCasaId: casas[personaje.house],
-        ColMagPersonajeFechaNacimiento: `${ano || '1900'}-${mes || '01'}-${dia || '01'}`,
-        AnoNcimiento: personaje.yearOfBirth || 0,
+        ColmagCasaId: casas[personaje.house],
+        ColMagPersonajeFechaNacimiento: fecha,
+        ColMagPersonajeAnoNacimiento: personaje.yearOfBirth,
         ColMagPersonajeAscendencia: personaje.ancestry,
         ColMagPersonajeColorOjos: personaje.eyeColour,
         ColMagPersonajeColorCabello: personaje.hairColour,
@@ -86,7 +88,7 @@ let personajeAggregar = async (personaje) => {
                 ColMagVaritaMagicaId: id,
                 ColMagVaritaMagicaMadera: personaje.wand.wood,
                 ColMagVaritaMagicaAlma: personaje.wand.core,
-                ColMagVaritaMagicaLongitud: personaje.wand.length            
+                ColMagVaritaMagicaLongitud: personaje.wand.length || 0           
             }
         ]
     };

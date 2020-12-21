@@ -24,7 +24,7 @@ describe('ColMagPersonajesService', () => {
         Genero: `male`,
         ColmagCasaId: 178,
         ColMagPersonajeFechaNacimiento: new Date(1980, 7, 31, 12, 0, 0),
-        AnoNacimiento: 1980,
+        ColMagPersonajeAnoNacimiento: 1980,
         ColMagPersonajeAscendencia: `half-blood`,
         ColMagPersonajeColorOjos: `green`,
         ColMagPersonajeColorCabello: `black`,
@@ -58,7 +58,7 @@ describe('ColMagPersonajesService', () => {
 			    expect(value.Genero).toBe(row.Genero);
 			    expect(value.ColmagCasaId).toBe(row.ColmagCasaId);
 			    expect(new Date(value.ColMagPersonajeFechaNacimiento)).toEqual(row.ColMagPersonajeFechaNacimiento);
-			    expect(value.AnoNacimiento).toBe(row.AnoNacimiento);
+			    expect(value.ColMagPersonajeAnoNacimiento).toBe(row.ColMagPersonajeAnoNacimiento);
 			    expect(value.ColMagPersonajeAscendencia).toBe(row.ColMagPersonajeAscendencia);
 			    expect(value.ColMagPersonajeColorOjos).toBe(row.ColMagPersonajeColorOjos);
 			    expect(value.ColMagPersonajeColorCabello).toBe(row.ColMagPersonajeColorCabello);
@@ -143,7 +143,7 @@ describe('ColMagPersonajesService', () => {
 			    expect(value.Genero).toBe(row.Genero);
 			    expect(value.ColmagCasaId).toBe(row.ColmagCasaId);
 			    expect(new Date(value.ColMagPersonajeFechaNacimiento)).toEqual(row.ColMagPersonajeFechaNacimiento);
-			    expect(value.AnoNacimiento).toBe(row.AnoNacimiento);
+			    expect(value.ColMagPersonajeAnoNacimiento).toBe(row.ColMagPersonajeAnoNacimiento);
 			    expect(value.ColMagPersonajeAscendencia).toBe(row.ColMagPersonajeAscendencia);
 			    expect(value.ColMagPersonajeColorOjos).toBe(row.ColMagPersonajeColorOjos);
 			    expect(value.ColMagPersonajeColorCabello).toBe(row.ColMagPersonajeColorCabello);
@@ -171,7 +171,7 @@ describe('ColMagPersonajesService', () => {
 			    expect(value.Genero).toBe(row.Genero);
 			    expect(value.ColmagCasaId).toBe(row.ColmagCasaId);
 			    expect(new Date(value.ColMagPersonajeFechaNacimiento)).toEqual(row.ColMagPersonajeFechaNacimiento);
-			    expect(value.AnoNacimiento).toBe(row.AnoNacimiento);
+			    expect(value.ColMagPersonajeAnoNacimiento).toBe(row.ColMagPersonajeAnoNacimiento);
 			    expect(value.ColMagPersonajeAscendencia).toBe(row.ColMagPersonajeAscendencia);
 			    expect(value.ColMagPersonajeColorOjos).toBe(row.ColMagPersonajeColorOjos);
 			    expect(value.ColMagPersonajeColorCabello).toBe(row.ColMagPersonajeColorCabello);

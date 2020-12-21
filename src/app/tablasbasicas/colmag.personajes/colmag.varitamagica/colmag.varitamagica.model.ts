@@ -4,7 +4,7 @@ export class ColMagVaritaMagicaModel {
     public ColMagVaritaMagicaComp: string;
     public Madera: string;
     public ColMagVaritaMagicaAlma: string;
-    public ColMagVaritaMagicaLongitud: number;
+    public ColMagVaritaMagicaLongitud: number = 0.0;
     public _secuencia: number;
     public _estado: string = 'N';
     public _id: string;
@@ -69,7 +69,7 @@ export class ColMagVaritaMagicaModel {
         this.ColMagVaritaMagicaId = parseInt(result[1]);
         this.Madera = result[2];
         this.ColMagVaritaMagicaAlma = result[3];
-        this.ColMagVaritaMagicaLongitud = parseInt(result[4]);
+        this.ColMagVaritaMagicaLongitud = parseFloat(result[4]);
 
         return this;
     }

@@ -25,7 +25,7 @@ describe('ColMagVaritaMagicaService', () => {
         ColMagVaritaMagica_Comp: '', //convert(varchar(max),ColMagPersonajeId) || '/' || convert(varchar(max),ColMagVaritaMagicaId) 
         Madera: `holly`,
         ColMagVaritaMagicaAlma: `phoenix feather`,
-        ColMagVaritaMagicaLongitud: 11,
+        ColMagVaritaMagicaLongitud: 11.00,
         _estado: ''
     };
 

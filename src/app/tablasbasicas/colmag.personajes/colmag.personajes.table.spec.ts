@@ -24,7 +24,7 @@ describe('ColMagPersonajes_Table', () => {
         Genero: `male`,
         ColmagCasaId: 178,
         ColMagPersonajeFechaNacimiento: new Date(1980, 7, 31, 12, 0, 0),
-        AnoNacimiento: 1980,
+        ColMagPersonajeAnoNacimiento: 1980,
         ColMagPersonajeAscendencia: `half-blood`,
         ColMagPersonajeColorOjos: `green`,
         ColMagPersonajeColorCabello: `black`,

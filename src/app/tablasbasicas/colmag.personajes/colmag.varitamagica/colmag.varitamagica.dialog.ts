@@ -50,7 +50,7 @@ export class ColMagVaritaMagicaDialog {
             'ColMagVaritaMagicaId': [ this.selectedColMagVaritaMagica.ColMagVaritaMagicaId, [ Validators.required, Validators.maxLength(4), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
             'Madera': [ this.selectedColMagVaritaMagica.Madera, [ Validators.required, Validators.maxLength(20), Validators.pattern('^([^\\s]|\\s[^\\s])+$') ] ],
             'ColMagVaritaMagicaAlma': [ this.selectedColMagVaritaMagica.ColMagVaritaMagicaAlma, [ Validators.required, Validators.maxLength(22), Validators.pattern('^([^\\s]|\\s[^\\s])+$') ] ],
-            'ColMagVaritaMagicaLongitud': [ this.selectedColMagVaritaMagica.ColMagVaritaMagicaLongitud, [ Validators.required, Validators.maxLength(2), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
+            'ColMagVaritaMagicaLongitud': [ this.selectedColMagVaritaMagica.ColMagVaritaMagicaLongitud, [ Validators.required, Validators.maxLength(5), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
             '_estado': [ this.selectedColMagVaritaMagica._estado, Validators.required ]
         }, {
                 validators: (formGroup: FormGroup): ValidationErrors | null => {
