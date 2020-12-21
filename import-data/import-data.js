@@ -62,15 +62,15 @@ let casas = {
 let id = 0 
 
 let personajeAggregar = async (personaje) => {
-
+    let [dia, mes, ano] = personaje.dateOfBirth.split("-")
     const _personaje = {
         ColMagPersonajeId: ++id,
         ColMagPersonajeNombre: personaje.name,
         ColMagPersonajeEspecie: personaje.species,
         Genero: personaje.gender,
         ColMagCasaId: casas[personaje.house],
-        ColMagPersonajeFechaNacimiento: personaje.dateOfBirth,
-        AnoNcimiento: personaje.yearOfBirth,
+        ColMagPersonajeFechaNacimiento: `${ano || '1900'}-${mes || '01'}-${dia || '01'}`,
+        AnoNcimiento: personaje.yearOfBirth || 0,
         ColMagPersonajeAscendencia: personaje.ancestry,
         ColMagPersonajeColorOjos: personaje.eyeColour,
         ColMagPersonajeColorCabello: personaje.hairColour,

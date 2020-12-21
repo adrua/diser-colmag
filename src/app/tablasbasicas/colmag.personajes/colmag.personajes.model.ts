@@ -7,7 +7,7 @@ export class ColMagPersonajesModel {
     public Genero: string;
     public ColmagCasaId: number;
     public ColMagPersonajeFechaNacimiento: Date;
-    public AnoNcimiento: number;
+    public AnoNacimiento: number;
     public ColMagPersonajeAscendencia: string;
     public ColMagPersonajeColorOjos: string;
     public ColMagPersonajeColorCabello: string;
@@ -32,7 +32,7 @@ export class ColMagPersonajesModel {
             this.Genero = json.Genero;
             this.ColmagCasaId = json.ColmagCasaId;
             this.ColMagPersonajeFechaNacimiento = json.ColMagPersonajeFechaNacimiento;
-            this.AnoNcimiento = json.AnoNcimiento;
+            this.AnoNacimiento = json.AnoNacimiento;
             this.ColMagPersonajeAscendencia = json.ColMagPersonajeAscendencia;
             this.ColMagPersonajeColorOjos = json.ColMagPersonajeColorOjos;
             this.ColMagPersonajeColorCabello = json.ColMagPersonajeColorCabello;
@@ -71,7 +71,7 @@ export class ColMagPersonajesModel {
               Genero: dato.Genero,
               ColmagCasaId: dato.ColmagCasaId,
               ColMagPersonajeFechaNacimiento: dato.ColMagPersonajeFechaNacimiento,
-              AnoNcimiento: dato.AnoNcimiento,
+              AnoNacimiento: dato.AnoNacimiento,
               ColMagPersonajeAscendencia: dato.ColMagPersonajeAscendencia,
               ColMagPersonajeColorOjos: dato.ColMagPersonajeColorOjos,
               ColMagPersonajeColorCabello: dato.ColMagPersonajeColorCabello,
@@ -98,7 +98,7 @@ export class ColMagPersonajesModel {
         result += `${separator}${this.Genero}`;
         result += `${separator}${this.ColmagCasaId}`;
         result += `${separator}${this.ColMagPersonajeFechaNacimiento}`;
-        result += `${separator}${this.AnoNcimiento}`;
+        result += `${separator}${this.AnoNacimiento}`;
         result += `${separator}${this.ColMagPersonajeAscendencia}`;
         result += `${separator}${this.ColMagPersonajeColorOjos}`;
         result += `${separator}${this.ColMagPersonajeColorCabello}`;
@@ -121,7 +121,7 @@ export class ColMagPersonajesModel {
         this.Genero = result[3];
         this.ColmagCasaId = parseInt(result[4]);
         this.ColMagPersonajeFechaNacimiento = new Date(result[5]);
-        this.AnoNcimiento = parseInt(result[6]);
+        this.AnoNacimiento = parseInt(result[6]);
         this.ColMagPersonajeAscendencia = result[7];
         this.ColMagPersonajeColorOjos = result[8];
         this.ColMagPersonajeColorCabello = result[9];

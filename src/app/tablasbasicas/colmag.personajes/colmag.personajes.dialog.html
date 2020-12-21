@@ -63,7 +63,7 @@
                         <mat-form-field>
                             <input matInput [matDatepicker]="datepickerColMagPersonajeFechaNacimiento" displayFormat="MMM DD/YYYY"
                                     formControlName="ColMagPersonajeFechaNacimiento"
-                                    placeholder="{{ 'colMagPersonajes.ColMagPersonajeFechaNacimiento' | translate }}:" />
+                                    placeholder="{{ 'colMagPersonajes.ColMagPersonajeFechaNacimiento' | translate }}?" />
                             <mat-datepicker-toggle matSuffix [for]="datepickerColMagPersonajeFechaNacimiento"></mat-datepicker-toggle>
                             <mat-datepicker #datepickerColMagPersonajeFechaNacimiento></mat-datepicker>
                         </mat-form-field>
@@ -72,10 +72,10 @@
                     <div class="col-sm-6 col-12">
                         <mat-form-field>
                             <input matInput type="number"
-                                    formControlName="AnoNcimiento"
-                                    placeholder="{{ 'colMagPersonajes.AnoNcimiento' | translate }}:" />
+                                    formControlName="AnoNacimiento"
+                                    placeholder="{{ 'colMagPersonajes.AnoNacimiento' | translate }}?" />
                         </mat-form-field>
-                        <mat-error *ngIf="colMagPersonajesForm.controls.AnoNcimiento.invalid && colMagPersonajesForm.controls.AnoNcimiento.touched">{{ "colMagPersonajes.AnoNcimientoError" | translate }}</mat-error>
+                        <mat-error *ngIf="colMagPersonajesForm.controls.AnoNacimiento.invalid && colMagPersonajesForm.controls.AnoNacimiento.touched">{{ "colMagPersonajes.AnoNacimientoError" | translate }}</mat-error>
                     </div>
                 </div>
                 <div class="row">
@@ -111,7 +111,7 @@
                         <mat-form-field>
                             <input matInput type="text"
                                     formControlName="ColMagPersonajePatronus"
-                                    placeholder="{{ 'colMagPersonajes.ColMagPersonajePatronus' | translate }}:" />
+                                    placeholder="{{ 'colMagPersonajes.ColMagPersonajePatronus' | translate }}?" />
                         </mat-form-field>
                         <mat-error *ngIf="colMagPersonajesForm.controls.ColMagPersonajePatronus.invalid && colMagPersonajesForm.controls.ColMagPersonajePatronus.touched">{{ "colMagPersonajes.ColMagPersonajePatronusError" | translate }}</mat-error>
                     </div>

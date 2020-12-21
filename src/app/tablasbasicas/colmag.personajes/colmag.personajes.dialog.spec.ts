@@ -30,7 +30,7 @@ describe('ColMagPersonajesDialog', () => {
         Genero: `male`,
         ColmagCasaId: 178,
         ColMagPersonajeFechaNacimiento: new Date(1980, 7, 31, 12, 0, 0),
-        AnoNcimiento: 1980,
+        AnoNacimiento: 1980,
         ColMagPersonajeAscendencia: `half-blood`,
         ColMagPersonajeColorOjos: `green`,
         ColMagPersonajeColorCabello: `black`,
@@ -51,7 +51,7 @@ describe('ColMagPersonajesDialog', () => {
     let colMagPersonajeEspecieElement: DebugElement; 
     let generoElement: DebugElement; 
     let colMagPersonajeFechaNacimientoElement: DebugElement; 
-    let anoNcimientoElement: DebugElement; 
+    let anoNacimientoElement: DebugElement; 
     let colMagPersonajeAscendenciaElement: DebugElement; 
     let colMagPersonajeColorOjosElement: DebugElement; 
     let colMagPersonajeColorCabelloElement: DebugElement; 
@@ -101,7 +101,7 @@ describe('ColMagPersonajesDialog', () => {
         colMagPersonajeEspecieElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagPersonajeEspecie"]')); 
         generoElement = fixture.debugElement.query(By.css('input[formcontrolname="Genero"]')); 
         colMagPersonajeFechaNacimientoElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagPersonajeFechaNacimiento"]')); 
-        anoNcimientoElement = fixture.debugElement.query(By.css('input[formcontrolname="AnoNcimiento"]')); 
+        anoNacimientoElement = fixture.debugElement.query(By.css('input[formcontrolname="AnoNacimiento"]')); 
         colMagPersonajeAscendenciaElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagPersonajeAscendencia"]')); 
         colMagPersonajeColorOjosElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagPersonajeColorOjos"]')); 
         colMagPersonajeColorCabelloElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagPersonajeColorCabello"]')); 
@@ -138,12 +138,9 @@ describe('ColMagPersonajesDialog', () => {
         component.colMagPersonajesForm.controls.ColMagPersonajeNombre.setValue(rowBase.ColMagPersonajeNombre);
         component.colMagPersonajesForm.controls.ColMagPersonajeEspecie.setValue(rowBase.ColMagPersonajeEspecie);
         component.colMagPersonajesForm.controls.Genero.setValue(rowBase.Genero);
-        component.colMagPersonajesForm.controls.ColMagPersonajeFechaNacimiento.setValue(rowBase.ColMagPersonajeFechaNacimiento);
-        component.colMagPersonajesForm.controls.AnoNcimiento.setValue(rowBase.AnoNcimiento);
         component.colMagPersonajesForm.controls.ColMagPersonajeAscendencia.setValue(rowBase.ColMagPersonajeAscendencia);
         component.colMagPersonajesForm.controls.ColMagPersonajeColorOjos.setValue(rowBase.ColMagPersonajeColorOjos);
         component.colMagPersonajesForm.controls.ColMagPersonajeColorCabello.setValue(rowBase.ColMagPersonajeColorCabello);
-        component.colMagPersonajesForm.controls.ColMagPersonajePatronus.setValue(rowBase.ColMagPersonajePatronus);
         component.colMagPersonajesForm.controls.ColMagPersonajeEstudiante.setValue(rowBase.ColMagPersonajeEstudiante);
         component.colMagPersonajesForm.controls.ColMagPersonajeProfesor.setValue(rowBase.ColMagPersonajeProfesor);
         component.colMagPersonajesForm.controls.ColMagPersonajeActor.setValue(rowBase.ColMagPersonajeActor);
@@ -159,6 +156,15 @@ describe('ColMagPersonajesDialog', () => {
         expect(btnEliminarElement.nativeElement.disabled).toBeTruthy();
         expect(btnCancelarElement.nativeElement.disabled).toBeFalsy();
 
+        component.colMagPersonajesForm.controls.ColMagPersonajeFechaNacimiento.setValue(rowBase.ColMagPersonajeFechaNacimiento);
+        component.colMagPersonajesForm.controls.AnoNacimiento.setValue(rowBase.AnoNacimiento);
+        component.colMagPersonajesForm.controls.ColMagPersonajePatronus.setValue(rowBase.ColMagPersonajePatronus);
+
+        expect(component.getErrorMessages()).toBe("No hay errores. Listo para salvar");
+
+        expect(btnGuardarElement.nativeElement.disabled).toBeFalsy();
+        expect(btnEliminarElement.nativeElement.disabled).toBeTruthy();
+        expect(btnCancelarElement.nativeElement.disabled).toBeFalsy();
         
         btnGuardarElement.triggerEventHandler('click', null);
 
@@ -171,7 +177,7 @@ describe('ColMagPersonajesDialog', () => {
         expect(row.Genero).toBe(rowBase.Genero);
         expect(row.ColmagCasaId).toBe(rowBase.ColmagCasaId);
         expect(row.ColMagPersonajeFechaNacimiento).toBe(rowBase.ColMagPersonajeFechaNacimiento);
-        expect(row.AnoNcimiento).toBe(rowBase.AnoNcimiento);
+        expect(row.AnoNacimiento).toBe(rowBase.AnoNacimiento);
         expect(row.ColMagPersonajeAscendencia).toBe(rowBase.ColMagPersonajeAscendencia);
         expect(row.ColMagPersonajeColorOjos).toBe(rowBase.ColMagPersonajeColorOjos);
         expect(row.ColMagPersonajeColorCabello).toBe(rowBase.ColMagPersonajeColorCabello);
@@ -213,7 +219,7 @@ describe('ColMagPersonajesDialog', () => {
         expect(row.Genero).toBe(rowBase.Genero);
         expect(row.ColmagCasaId).toBe(rowBase.ColmagCasaId);
         expect(row.ColMagPersonajeFechaNacimiento).toBe(rowBase.ColMagPersonajeFechaNacimiento);
-        expect(row.AnoNcimiento).toBe(rowBase.AnoNcimiento);
+        expect(row.AnoNacimiento).toBe(rowBase.AnoNacimiento);
         expect(row.ColMagPersonajeAscendencia).toBe(rowBase.ColMagPersonajeAscendencia);
         expect(row.ColMagPersonajeColorOjos).toBe(rowBase.ColMagPersonajeColorOjos);
         expect(row.ColMagPersonajeColorCabello).toBe(rowBase.ColMagPersonajeColorCabello);

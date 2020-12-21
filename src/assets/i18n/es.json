@@ -219,7 +219,9 @@
 		"ColMagCasaNombre": "Casa",
 		"ColMagCasaNombreError": "Casa inválido",
 		"ColMagPersonajeImagen": "Imagen",
-		"ColMagPersonajeImagenError": "Imagen inválido"
+		"ColMagPersonajeImagenError": "Imagen inválido",
+		"AnoNacimiento": "Año Nacimiento",
+		"AnoNacimientoError": "Año Nacimiento inválido"
 	},
 	"colMagVaritaMagica": {
 		"ColMagPersonajeId": "Id",
