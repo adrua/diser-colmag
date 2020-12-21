@@ -60,72 +60,14 @@ export class ColmagEstudiantesDialog {
                 }
         });
 
+        this.colmagEstudiantesForm.disable();
+
         this.colmagEstudiantesForm.valueChanges.subscribe((data) => {
 
             this.colmagEstudiantesForm.patchValue({
 
             }, {emitEvent: false, onlySelf: true});
         });
-    }
-
-    onSubmit(formData: ColmagEstudiantesModel) {
-        this._proc = true;
-        if (this.colmagEstudiantesForm.valid) {
-            formData = Object.assign(ColmagEstudiantesModel.clone(this.originalColmagEstudiantes), formData);
-            this.colmagEstudiantesService.save(formData, this.originalColmagEstudiantes).subscribe((data: any) => {
-                this._proc = false;
-                this._status = !data?.error && !data?.message;
-                this.resultError = null;
-
-                if (this._status) {
-                    formData = Object.assign(this.originalColmagEstudiantes, formData);
-                    if(formData._estado === 'N') {
-                        formData.ColmagEstudianteId = data.ColmagEstudianteId;
-                    }
-
-                    this.dialogRef.close({
-                        data: formData
-                    });
-                } else {
-                   this.resultError = data.error?.value || data.message;
-                   this.openNotificationDanger('Error al salvar', this.resultError)
-                }
-            });
-        }
-    }
-
-    onDelete(formData: ColmagEstudiantesModel) {
-        if (this.colmagEstudiantesForm.valid) {
-            const dialogRef = this.dialog.open(AlertaComponent, {
-               data: {
-                    tipo: 'error', 
-                    titulo: 'Confirmar', 
-                    mensaje: '¿Está seguro de eliminar el registro seleccionado?' 
-               }
-            });
-
-            dialogRef.afterClosed().subscribe(result => {
-                if (result.data) {
-                    this._proc = true;
-                    this.colmagEstudiantesService.delete(this.selectedColmagEstudiantes).subscribe((data: any) => {
-                        this._proc = false;
-                        this._status = !data?.error && !data?.message;
-                        this.resultError = null;
-
-                        if (this._status) {
-                            this.originalColmagEstudiantes._estado = 'D';
-                            this.dialogRef.close({
-                                data: this.originalColmagEstudiantes,
-                                delete: true
-                            });
-                        } else {
-                            this.resultError = data.error?.value || data.message;
-                            this.openNotificationDanger('Error al eliminar', this.resultError)
-                        }
-                    });
-                }
-            });
-        }
     }
 
     openNotificationDanger(titulo: string, mensaje: string) { 

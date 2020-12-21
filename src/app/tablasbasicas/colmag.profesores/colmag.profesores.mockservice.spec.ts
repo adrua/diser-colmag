@@ -1,0 +1,140 @@
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+
+import { ColmagProfesoresModel } from './colmag.profesores.model';
+
+declare var lastError;
+
+@Injectable({ providedIn: 'root' })
+export class ColmagProfesoresMockService {
+    rows: Array<ColmagProfesoresModel> = [];
+    autoincrement = this.rows.length;
+
+    constructor() { }
+
+    getById(colmagProfesorId: number): Observable<any> {
+        const _filtered = this.rows.filter((x) => x.ColmagProfesorId === colmagProfesorId);
+
+        let _row = <any>{};
+
+        if (_filtered.length) {
+            _row = _filtered[0];
+        } else {
+            _row = {
+                status: 404,
+                statusText: "OK"
+            };
+            lastError = _row;
+        }
+        
+        return of(_row);
+    }
+
+    getAll(): Observable<any> {
+        return of({
+            "@odata.count": this.rows.length,
+            value: this.rows        
+        });
+    }
+
+    getList(filter: string,
+            paginator: any,
+            sort: any): Observable<any> {
+
+        let _filtered = [...this.rows];
+
+        if (filter) {
+            const _filter = new Function("x", `return ${filter};`);
+            _filtered = this.rows.filter((x) => _filter(x));
+        }
+
+        if (sort?.active) {
+            const _sort = new Function("a", "b", `return (a.${sort.active.column} === b.${sort.active.column}])?0:((a.${sort.active.column}] > b.${sort.active.column}])?1:-1);`);
+            _filtered = _filtered.sort((a, b) => _sort(a, b));
+            if(sort.direction === "desc") {
+                _filtered = _filtered.reverse();
+            }
+        }
+
+        _filtered = _filtered.slice(paginator.pageIndex * paginator.pageSize, paginator.pageSize);
+        return of({
+            "@odata.count": _filtered.length,
+            value: _filtered        
+        });
+    }
+
+    add(row: ColmagProfesoresModel): Observable<ColmagProfesoresModel> {
+        let _row = ColmagProfesoresModel.clone(row);
+
+        this.rows.push(_row);
+        return of(_row);
+    }
+
+    update(row: ColmagProfesoresModel, original: ColmagProfesoresModel): Observable<ColmagProfesoresModel> {
+        const inx = this.rows.findIndex((x) => x.ColmagProfesorId === original.ColmagProfesorId);
+
+        let _row = null;
+
+        if (inx >= 0) {
+            this.rows[inx] = ColmagProfesoresModel.clone(row);
+        } else {
+            _row = {
+                status: 404,
+                statusText: "OK"
+            };
+            lastError = _row;
+        }
+
+        return of(_row);
+    }
+
+    save(row: ColmagProfesoresModel, original: ColmagProfesoresModel): Observable<ColmagProfesoresModel> {
+        if (row._estado === 'N') {
+            return this.add(row);
+        } else {
+            return this.update(row, original);
+        }
+    }
+
+    delete(row: ColmagProfesoresModel): Observable<any> {
+        const inx = this.rows.findIndex((x) => x.ColmagProfesorId === row.ColmagProfesorId);
+
+        let _row = null;
+
+        if (inx >= 0) {
+            this.rows.splice(inx, 1);
+        } else {
+            _row = {
+                status: 404,
+                statusText: "OK"
+            };
+            lastError = _row;
+        }
+
+        return of(_row);
+    }
+
+    saveRows(rows: Array<ColmagProfesoresModel>): Observable<any> {
+        const _rows = rows.map((row) => this.add(row));
+        return of(_rows);
+    }
+
+    private handleError(operation = 'operation', result?: any) {
+
+          // TODO: send the error to remote logging infrastructure
+          console.error(result.error); // log to console instead
+
+          // TODO: better job of transforming error for user consumption
+          this.log(`${operation} failed: ${result.message}`);
+
+          // Let the app keep running by returning an empty result.
+          return of(result);
+    }
+
+    /** Log a ColmagProfesoresService message with the MessageService */
+    private log(message: string) {
+        // this.messageService.add(`ColmagProfesoresService: ${message}`);
+        console.log(`ColmagProfesoresService: ${message}`);
+    }
+
+}

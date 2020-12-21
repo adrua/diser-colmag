@@ -11,11 +11,11 @@ export class ColmagEstudiantesModel {
 
     constructor(json: any = null) {
         if (json !== null) {
-            this.ColmagEstudianteId = json.ColmagEstudianteId;
-            this.ColmagEstudianteNombre = json.ColmagEstudianteNombre;
-            this.ColmagEstudiantePatronus = json.ColmagEstudiantePatronus;
-            this.ColmagEstudianteEdad = json.ColmagEstudianteEdad;
-            this.ColmagEstudianteImagen = json.ColmagEstudianteImagen;
+            this.ColmagEstudianteId = json.ColMagPersonajeId;
+            this.ColmagEstudianteNombre = json.ColMagPersonajeNombre;
+            this.ColmagEstudiantePatronus = json.ColMagPersonajePatronus;
+            this.ColmagEstudianteEdad = new Date().getFullYear() - json.ColMagPersonajeAnoNacimiento;
+            this.ColmagEstudianteImagen = json.ColMagPersonajeImagen;
         }
     }
 

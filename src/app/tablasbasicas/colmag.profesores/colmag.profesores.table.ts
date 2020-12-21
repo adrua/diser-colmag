@@ -9,26 +9,26 @@ import { AlertasArkeosComponent, DescargaExcelModule } from 'arkeos-components';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { ColmagEstudiantesDialog } from './colmag.estudiantes.dialog';
-import { ColmagEstudiantesService } from './colmag.estudiantes.service';
-import { ColmagEstudiantesModel } from './colmag.estudiantes.model';
+import { ColmagProfesoresDialog } from './colmag.profesores.dialog';
+import { ColmagProfesoresService } from './colmag.profesores.service';
+import { ColmagProfesoresModel } from './colmag.profesores.model';
 
 declare var conditionsLists: any;
 
 @Component({
-  selector: 'colmag-estudiantes-table',
-  templateUrl: './colmag.estudiantes.table.html',
-  // styleUrls: ['./colmag.estudiantes.table.css'],
-  providers: [ColmagEstudiantesService]
+  selector: 'colmag-profesores-table',
+  templateUrl: './colmag.profesores.table.html',
+  // styleUrls: ['./colmag.profesores.table.css'],
+  providers: [ColmagProfesoresService]
 })
-export class ColmagEstudiantesTable implements AfterViewInit {
-    rows: ColmagEstudiantesModel[] = [];
-    originals: ColmagEstudiantesModel[] = [];
-    selectedRow: ColmagEstudiantesModel;
+export class ColmagProfesoresTable implements AfterViewInit {
+    rows: ColmagProfesoresModel[] = [];
+    originals: ColmagProfesoresModel[] = [];
+    selectedRow: ColmagProfesoresModel;
     selectedIndex: number = 0;
-    originalRow: ColmagEstudiantesModel;
+    originalRow: ColmagProfesoresModel;
 
-    public displayedColumns: string[] = ['colmagEstudianteId', 'colmagEstudianteNombre', 'colmagEstudiantePatronus', 'colmagEstudianteEdad', 'colmagEstudianteImagen'];
+    public displayedColumns: string[] = ['colmagProfesorId', 'colmagProfesorNombre', 'colmagProfesorPatronus', 'colmagProfesorEdad', 'colmagProfesorImagen'];
 
     public conditionsList = conditionsLists.Varchar;
     public searchValue: any = {};
@@ -67,7 +67,7 @@ export class ColmagEstudiantesTable implements AfterViewInit {
     constructor(public dialog: MatDialog,
                 private bottomSheet: MatBottomSheet,
                 private snackBar: MatSnackBar,
-                private colmagEstudiantesService: ColmagEstudiantesService) { }
+                private colmagProfesoresService: ColmagProfesoresService) { }
 
     ngAfterViewInit() {
         // If the user changes the sort order, reset back to the first page.
@@ -92,7 +92,7 @@ export class ColmagEstudiantesTable implements AfterViewInit {
               }
               _filter = (_filter) ? _filter.substr(5) : _filter;
 
-              return this.colmagEstudiantesService.getList(_filter, this.paginator, this.sort);
+              return this.colmagProfesoresService.getList(_filter, this.paginator, this.sort);
             }),
             map(data => {
               // Flip flag to show that loading has finished.
@@ -116,15 +116,14 @@ export class ColmagEstudiantesTable implements AfterViewInit {
               });
             })
           ).subscribe(data => {
-            data = data.map((row) => row = new ColmagEstudiantesModel(row));
             this.rows = [...data];
             this.originals = data;
           });
     }
 
     onAdd(): void {
-      this.selectedRow = new ColmagEstudiantesModel();
-      this.originalRow = new ColmagEstudiantesModel();
+      this.selectedRow = new ColmagProfesoresModel();
+      this.originalRow = new ColmagProfesoresModel();
       this.selectedIndex = 0;
 
       this.openDialog();
@@ -149,17 +148,17 @@ export class ColmagEstudiantesTable implements AfterViewInit {
         this.paginator.page.emit();
     }
 
-    onSelect(e: Event, row: ColmagEstudiantesModel, index: number) {
+    onSelect(e: Event, row: ColmagProfesoresModel, index: number) {
         this.selectedRow = row;
         this.selectedIndex = index;
-        this.originalRow = ColmagEstudiantesModel.clone(row);
+        this.originalRow = ColmagProfesoresModel.clone(row);
     }
 
-    onSelectAndEdit(e: Event, row: ColmagEstudiantesModel, index: number) {
+    onSelectAndEdit(e: Event, row: ColmagProfesoresModel, index: number) {
         this.selectedRow = row;
         this.selectedRow._estado = 'O';
         this.selectedIndex = index;
-        this.originalRow = ColmagEstudiantesModel.clone(row);
+        this.originalRow = ColmagProfesoresModel.clone(row);
         this.originalRow._estado = 'O';
 
         this.openDialog();
@@ -188,7 +187,7 @@ export class ColmagEstudiantesTable implements AfterViewInit {
 
     onExportExcel(e: Event) {
         this.isLoadingResults = true;
-        this.colmagEstudiantesService.getAll().subscribe(data => {
+        this.colmagProfesoresService.getAll().subscribe(data => {
             if (data.value.length == 0) {
                 this.isLoadingResults = false;
                 this.bottomSheet.open(AlertasArkeosComponent, {
@@ -198,7 +197,7 @@ export class ColmagEstudiantesTable implements AfterViewInit {
                 }
                 });
             } else {
-                DescargaExcelModule.generarArchivoExcel(ColmagEstudiantesModel.cloneExcel(data.value), 'Estudiantes');
+                DescargaExcelModule.generarArchivoExcel(ColmagProfesoresModel.cloneExcel(data.value), 'Profesores');
                 this.isLoadingResults = false;
             }
         });
@@ -206,8 +205,8 @@ export class ColmagEstudiantesTable implements AfterViewInit {
 
     onCopyRows(e: Event) {
         let result = this.displayedColumns.join('\t') + '\n';
-        this.colmagEstudiantesService.getAll().subscribe((data: any) => {
-            data.forEach((row) => result += new ColmagEstudiantesModel(row).toClipboard() + '\n');
+        this.colmagProfesoresService.getAll().subscribe((data: any) => {
+            data.forEach((row) => result += new ColmagProfesoresModel(row).toClipboard() + '\n');
             (navigator as any).clipboard.writeText(result)
                 .then(
                     () => console.log('write to clipboard OK'),
@@ -220,9 +219,13 @@ export class ColmagEstudiantesTable implements AfterViewInit {
     onPasteRows(e: Event) {
         (navigator as any).clipboard.readText().then((text: string) => {
             let rows = text.split("\n").filter((line) => line.length > 0).map((line) => {
-                return new ColmagEstudiantesModel().fromClipboard(line);
+                return new ColmagProfesoresModel().fromClipboard(line);
             });
 
+            this.colmagProfesoresService.saveRows(rows).subscribe((data: any) => {
+                console.log('Saved rows for ColmagProfesores');
+                this.paginator.page.emit();
+            });
         });
     }
 
@@ -231,7 +234,7 @@ export class ColmagEstudiantesTable implements AfterViewInit {
     }
 
     openDialog(): void {
-        const dialogRef = this.dialog.open(ColmagEstudiantesDialog, {
+        const dialogRef = this.dialog.open(ColmagProfesoresDialog, {
           data: {
             selected: this.selectedRow,
             original: this.originalRow

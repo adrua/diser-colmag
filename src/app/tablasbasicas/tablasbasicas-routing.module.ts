@@ -11,12 +11,12 @@ const routes: Routes = [
         loadChildren: () => import('./colmag.personajes/colmag.personajes.module').then(mod => mod.ColMagPersonajesModule)
     },
     {
-        path: 'ColMag_Personajes',
-        loadChildren: () => import('./colmag.personajes/colmag.personajes.module').then(mod => mod.ColmagPersonajesModule)
-    },
-    {
         path: 'COLMAG_Estudiantes',
         loadChildren: () => import('./colmag.estudiantes/colmag.estudiantes.module').then(mod => mod.ColmagEstudiantesModule)
+    },
+    {
+        path: 'COLMAG_Profesores',
+        loadChildren: () => import('./colmag.profesores/colmag.profesores.module').then(mod => mod.ColmagProfesoresModule)
     },
     {
         path: '',

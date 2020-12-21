@@ -258,5 +258,21 @@
 		"_eliminar": "Eliminar",
 		"_cancelar": "Cancelar",
 		"_titulo": "Estudiantes.COLMAG"
+	},
+	"colmagProfesores": {
+		"ColmagProfesorId": "Id",
+		"ColmagProfesorIdError": "Id inválido",
+		"ColmagProfesorNombre": "Nombre",
+		"ColmagProfesorNombreError": "Nombre inválido",
+		"ColmagProfesorPatronus": "Patronus",
+		"ColmagProfesorPatronusError": "Patronus inválido",
+		"ColmagProfesorEdad": "Edad",
+		"ColmagProfesorEdadError": "Edad inválido",
+		"ColmagProfesorImagen": "Imagen",
+		"ColmagProfesorImagenError": "Imagen inválido",
+		"_guardar": "Salvar y Seguir",
+		"_eliminar": "Eliminar",
+		"_cancelar": "Cancelar",
+		"_titulo": "Profesores.COLMAG"
 	}
 }
