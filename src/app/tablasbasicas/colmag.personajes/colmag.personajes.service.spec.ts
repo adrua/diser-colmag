@@ -22,8 +22,8 @@ describe('ColMagPersonajesService', () => {
         ColMagPersonajeNombre: `Harry Potter`,
         ColMagPersonajeEspecie: `human`,
         Genero: `male`,
-        ColMagCaseaNombre: `Gryffindor`,
-        ColMagPersonajeFechaNacimiento: `31-07-1980`,
+        ColmagCasaId: 178,
+        ColMagPersonajeFechaNacimiento: new Date(1980, 7, 31, 12, 0, 0),
         AnoNcimiento: 1980,
         ColMagPersonajeAscendencia: `half-blood`,
         ColMagPersonajeColorOjos: `green`,
@@ -33,7 +33,11 @@ describe('ColMagPersonajesService', () => {
         ColMagPersonajeProfesor: false,
         ColMagPersonajeActor: `Daniel Radcliffe`,
         ColMagPersonajeVive: true,
-        ColMagPersonajeimagen: `http://hp-api.herokuapp.com`,
+        ColMagPersonajeImagen: `http://hp-api.herokuapp.com`,
+        ColmagCasas: {
+            ColmagCasaId: 178,
+            ColMagCasaNombre: `Gryffindor`
+        },
         _estado: ''
     };
 
@@ -52,8 +56,8 @@ describe('ColMagPersonajesService', () => {
 			    expect(value.ColMagPersonajeNombre).toBe(row.ColMagPersonajeNombre);
 			    expect(value.ColMagPersonajeEspecie).toBe(row.ColMagPersonajeEspecie);
 			    expect(value.Genero).toBe(row.Genero);
-			    expect(value.ColMagCaseaNombre).toBe(row.ColMagCaseaNombre);
-			    expect(value.ColMagPersonajeFechaNacimiento).toBe(row.ColMagPersonajeFechaNacimiento);
+			    expect(value.ColmagCasaId).toBe(row.ColmagCasaId);
+			    expect(new Date(value.ColMagPersonajeFechaNacimiento)).toEqual(row.ColMagPersonajeFechaNacimiento);
 			    expect(value.AnoNcimiento).toBe(row.AnoNcimiento);
 			    expect(value.ColMagPersonajeAscendencia).toBe(row.ColMagPersonajeAscendencia);
 			    expect(value.ColMagPersonajeColorOjos).toBe(row.ColMagPersonajeColorOjos);
@@ -63,7 +67,7 @@ describe('ColMagPersonajesService', () => {
 			    expect(value.ColMagPersonajeProfesor).toBe(row.ColMagPersonajeProfesor);
 			    expect(value.ColMagPersonajeActor).toBe(row.ColMagPersonajeActor);
 			    expect(value.ColMagPersonajeVive).toBe(row.ColMagPersonajeVive);
-			    expect(value.ColMagPersonajeimagen).toBe(row.ColMagPersonajeimagen);
+			    expect(value.ColMagPersonajeImagen).toBe(row.ColMagPersonajeImagen);
           done();
         });
     });
@@ -137,8 +141,8 @@ describe('ColMagPersonajesService', () => {
 			    expect(value.ColMagPersonajeNombre).toBe(row.ColMagPersonajeNombre);
 			    expect(value.ColMagPersonajeEspecie).toBe(row.ColMagPersonajeEspecie);
 			    expect(value.Genero).toBe(row.Genero);
-			    expect(value.ColMagCaseaNombre).toBe(row.ColMagCaseaNombre);
-			    expect(value.ColMagPersonajeFechaNacimiento).toBe(row.ColMagPersonajeFechaNacimiento);
+			    expect(value.ColmagCasaId).toBe(row.ColmagCasaId);
+			    expect(new Date(value.ColMagPersonajeFechaNacimiento)).toEqual(row.ColMagPersonajeFechaNacimiento);
 			    expect(value.AnoNcimiento).toBe(row.AnoNcimiento);
 			    expect(value.ColMagPersonajeAscendencia).toBe(row.ColMagPersonajeAscendencia);
 			    expect(value.ColMagPersonajeColorOjos).toBe(row.ColMagPersonajeColorOjos);
@@ -148,7 +152,7 @@ describe('ColMagPersonajesService', () => {
 			    expect(value.ColMagPersonajeProfesor).toBe(row.ColMagPersonajeProfesor);
 			    expect(value.ColMagPersonajeActor).toBe(row.ColMagPersonajeActor);
 			    expect(value.ColMagPersonajeVive).toBe(row.ColMagPersonajeVive);
-			    expect(value.ColMagPersonajeimagen).toBe(row.ColMagPersonajeimagen);
+			    expect(value.ColMagPersonajeImagen).toBe(row.ColMagPersonajeImagen);
             done();
         });
     });
@@ -165,8 +169,8 @@ describe('ColMagPersonajesService', () => {
 			    expect(value.ColMagPersonajeNombre).toBe(row.ColMagPersonajeNombre);
 			    expect(value.ColMagPersonajeEspecie).toBe(row.ColMagPersonajeEspecie);
 			    expect(value.Genero).toBe(row.Genero);
-			    expect(value.ColMagCaseaNombre).toBe(row.ColMagCaseaNombre);
-			    expect(value.ColMagPersonajeFechaNacimiento).toBe(row.ColMagPersonajeFechaNacimiento);
+			    expect(value.ColmagCasaId).toBe(row.ColmagCasaId);
+			    expect(new Date(value.ColMagPersonajeFechaNacimiento)).toEqual(row.ColMagPersonajeFechaNacimiento);
 			    expect(value.AnoNcimiento).toBe(row.AnoNcimiento);
 			    expect(value.ColMagPersonajeAscendencia).toBe(row.ColMagPersonajeAscendencia);
 			    expect(value.ColMagPersonajeColorOjos).toBe(row.ColMagPersonajeColorOjos);
@@ -176,7 +180,7 @@ describe('ColMagPersonajesService', () => {
 			    expect(value.ColMagPersonajeProfesor).toBe(row.ColMagPersonajeProfesor);
 			    expect(value.ColMagPersonajeActor).toBe(row.ColMagPersonajeActor);
 			    expect(value.ColMagPersonajeVive).toBe(row.ColMagPersonajeVive);
-			    expect(value.ColMagPersonajeimagen).toBe(row.ColMagPersonajeimagen);
+			    expect(value.ColMagPersonajeImagen).toBe(row.ColMagPersonajeImagen);
             done();
         });
     });
@@ -244,4 +248,52 @@ describe('ColMagPersonajesService', () => {
             done();
         });
     });
+
+    it('#filterColMagCasaNombre should return value from observable', (done: DoneFn) => {
+        httpClientSpy.get.and.returnValue(asyncData({value : [rowBase.ColmagCasas]}));
+
+        service.filterColMagCasaNombre(`Gryffindor`).subscribe(value => {
+            expect(value?.value?.length).toBe(1);
+            expect(value.value[0].ColMagCasaNombre).toBe(`Gryffindor`);
+            done();
+        });
+    });
+
+    it('#getByIdColMagCasaNombre should return One Row', (done: DoneFn) => {
+        let row = rowBase.ColmagCasas;
+
+        httpClientSpy.get.and.returnValue(asyncData(row));
+
+        service.getByIdColMagCasaNombre(row.ColmagCasaId).subscribe((value) => {
+		    expect(value.ColmagCasaId).toBe(row.ColmagCasaId);
+			expect(value.ColMagCasaNombre).toBe(row.ColMagCasaNombre);
+            done();
+        });
+    });
+
+    it('#getByIdColMagCasaNombre should return 404 Not found', (done: DoneFn) => {
+        const errorResponse = new HttpErrorResponse({
+            error: 'Not Found',
+            status: 404,
+            statusText: 'Not Found'
+        });
+
+        httpClientSpy.get.and.returnValue(asyncError(errorResponse));
+
+        let row = rowBase.ColmagCasas;
+
+        service.getByIdColMagCasaNombre(row.ColmagCasaId).subscribe(
+            (value) => {
+                console.log(`#getByIdColMagCasaNombre.Error: ${JSON.stringify(value)}`);
+                expect(value.statusText).toEqual('Not Found')
+                expect(value.status).toBe(404)
+                done();
+            },
+            (error) => {
+                fail(`expected an error, not ColmagCasasModel ${JSON.stringify(error)}`);
+                done();
+            }
+        );
+    });
+
 });

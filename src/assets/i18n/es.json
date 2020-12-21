@@ -213,7 +213,13 @@
 		"_guardar": "Salvar y Seguir",
 		"_eliminar": "Eliminar",
 		"_cancelar": "Cancelar",
-		"_titulo": "Personajes.ColMag"
+		"_titulo": "Personajes.ColMag",
+		"ColmagCasaId": "Casa",
+		"ColmagCasaIdError": "Casa inválido",
+		"ColMagCasaNombre": "Casa",
+		"ColMagCasaNombreError": "Casa inválido",
+		"ColMagPersonajeImagen": "Imagen",
+		"ColMagPersonajeImagenError": "Imagen inválido"
 	},
 	"colMagVaritaMagica": {
 		"ColMagPersonajeId": "Id",

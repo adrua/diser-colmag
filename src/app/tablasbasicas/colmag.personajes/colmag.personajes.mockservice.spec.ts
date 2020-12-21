@@ -10,6 +10,11 @@ export class ColMagPersonajesMockService {
     rows: Array<ColMagPersonajesModel> = [];
     autoincrement = this.rows.length;
 
+    rowsColmagCasas: Array<any> = [{
+        ColmagCasaId: 178,
+        ColMagCasaNombre: "Gryffindor"
+    }];
+
     constructor() { }
 
     getById(colMagPersonajeId: number): Observable<any> {
@@ -118,6 +123,29 @@ export class ColMagPersonajesMockService {
     saveRows(rows: Array<ColMagPersonajesModel>): Observable<any> {
         const _rows = rows.map((row) => this.add(row));
         return of(_rows);
+    }
+
+    filterColMagCasaNombre(val: string, pageSize: number = 10): Observable<any> {
+        let _filtered = this.rowsColmagCasas.filter((x) => x.ColMagCasaNombre.includes(val)).slice(0, pageSize);
+        
+        return of(_filtered);
+    }
+
+    getByIdColMagCasaNombre(colmagCasaId: number): Observable<any> {
+        let _filtered = this.rowsColmagCasas.filter((x) => x.ColmagCasaId === colmagCasaId);
+
+        let _row = null;
+
+        if (_filtered.length) {
+            _row = _filtered[0];
+        } else {
+            _row = {
+                status: 404,
+                statusText: "OK"
+            };
+        }
+
+        return of(_row);
     }
 
     private handleError(operation = 'operation', result?: any) {

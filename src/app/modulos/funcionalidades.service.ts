@@ -31,7 +31,29 @@ export class FuncionalidadesService {
                 "descripcion": "Casas",
                 "check": true,
                 "children": []
+              },
+              {
+                "id": 261,
+                "name": "COLMAG_Personajes", 
+                "descripcion": "Personajes",
+                "check": true,
+                "children": []
+              },
+              {
+                "id": 271,
+                "name": "COLMAG_Estudiantes", 
+                "descripcion": "Estudiantes",
+                "check": true,
+                "children": []
+              },
+              {
+                "id": 281,
+                "name": "COLMAG_Profesores", 
+                "descripcion": "Profesores",
+                "check": true,
+                "children": []
               }
+
             ]
           },
           {

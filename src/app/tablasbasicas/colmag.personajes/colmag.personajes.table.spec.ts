@@ -22,8 +22,8 @@ describe('ColMagPersonajes_Table', () => {
         ColMagPersonajeNombre: `Harry Potter`,
         ColMagPersonajeEspecie: `human`,
         Genero: `male`,
-        ColMagCaseaNombre: `Gryffindor`,
-        ColMagPersonajeFechaNacimiento: `31-07-1980`,
+        ColmagCasaId: 178,
+        ColMagPersonajeFechaNacimiento: new Date(1980, 7, 31, 12, 0, 0),
         AnoNcimiento: 1980,
         ColMagPersonajeAscendencia: `half-blood`,
         ColMagPersonajeColorOjos: `green`,
@@ -33,7 +33,11 @@ describe('ColMagPersonajes_Table', () => {
         ColMagPersonajeProfesor: false,
         ColMagPersonajeActor: `Daniel Radcliffe`,
         ColMagPersonajeVive: true,
-        ColMagPersonajeimagen: `http://hp-api.herokuapp.com`,
+        ColMagPersonajeImagen: `http://hp-api.herokuapp.com`,
+        ColmagCasas: {
+            ColmagCasaId: 178,
+            ColMagCasaNombre: `Gryffindor`
+        },
         _estado: ''
     };
 

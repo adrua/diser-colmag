@@ -24,6 +24,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "arkeos-components": "^2020.1020.1",
+    "axios": "^0.21.0",
     "bootstrap": "^4.5.2",
     "file-saver": "^2.0.2",
     "jquery": "^3.5.1",

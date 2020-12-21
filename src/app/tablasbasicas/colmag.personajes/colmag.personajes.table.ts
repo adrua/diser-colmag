@@ -36,7 +36,7 @@ export class ColMagPersonajesTable implements AfterViewInit {
     selectedIndex: number = 0;
     originalRow: ColMagPersonajesModel;
 
-    public displayedColumns: string[] = ['select', 'colMagPersonajeNombre', 'colMagPersonajeEspecie', 'genero', 'colMagCaseaNombre', 'colMagPersonajeFechaNacimiento', 'anoNcimiento', 'colMagPersonajeAscendencia', 'colMagPersonajeColorOjos', 'colMagPersonajeColorCabello', 'colMagPersonajePatronus', 'colMagPersonajeEstudiante', 'colMagPersonajeProfesor', 'colMagPersonajeActor', 'colMagPersonajeVive', 'colMagPersonajeimagen'];
+    public displayedColumns: string[] = ['select', 'colMagPersonajeNombre', 'colMagPersonajeEspecie', 'genero', 'colmagCasas/colMagCasaNombre', 'colMagPersonajeFechaNacimiento', 'anoNcimiento', 'colMagPersonajeAscendencia', 'colMagPersonajeColorOjos', 'colMagPersonajeColorCabello', 'colMagPersonajePatronus', 'colMagPersonajeEstudiante', 'colMagPersonajeProfesor', 'colMagPersonajeActor', 'colMagPersonajeVive', 'colMagPersonajeImagen'];
 
     public conditionsList = conditionsLists.Varchar;
     public searchValue: any = {};

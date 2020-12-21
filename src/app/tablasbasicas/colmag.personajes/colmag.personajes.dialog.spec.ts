@@ -28,8 +28,8 @@ describe('ColMagPersonajesDialog', () => {
         ColMagPersonajeNombre: `Harry Potter`,
         ColMagPersonajeEspecie: `human`,
         Genero: `male`,
-        ColMagCaseaNombre: `Gryffindor`,
-        ColMagPersonajeFechaNacimiento: `31-07-1980`,
+        ColmagCasaId: 178,
+        ColMagPersonajeFechaNacimiento: new Date(1980, 7, 31, 12, 0, 0),
         AnoNcimiento: 1980,
         ColMagPersonajeAscendencia: `half-blood`,
         ColMagPersonajeColorOjos: `green`,
@@ -39,14 +39,17 @@ describe('ColMagPersonajesDialog', () => {
         ColMagPersonajeProfesor: false,
         ColMagPersonajeActor: `Daniel Radcliffe`,
         ColMagPersonajeVive: true,
-        ColMagPersonajeimagen: `http://hp-api.herokuapp.com`,
+        ColMagPersonajeImagen: `http://hp-api.herokuapp.com`,
+        ColmagCasas: {
+            ColmagCasaId: 178,
+            ColMagCasaNombre: `Gryffindor`
+        },
         _estado: ''
     };
 
     let colMagPersonajeNombreElement: DebugElement; 
     let colMagPersonajeEspecieElement: DebugElement; 
     let generoElement: DebugElement; 
-    let colMagCaseaNombreElement: DebugElement; 
     let colMagPersonajeFechaNacimientoElement: DebugElement; 
     let anoNcimientoElement: DebugElement; 
     let colMagPersonajeAscendenciaElement: DebugElement; 
@@ -57,7 +60,8 @@ describe('ColMagPersonajesDialog', () => {
     let colMagPersonajeProfesorElement: DebugElement; 
     let colMagPersonajeActorElement: DebugElement; 
     let colMagPersonajeViveElement: DebugElement; 
-    let colMagPersonajeimagenElement: DebugElement; 
+    let colMagPersonajeImagenElement: DebugElement; 
+    let colmagCasasCtrlElement: DebugElement; 
 
     let btnGuardarElement: DebugElement;
     let btnEliminarElement: DebugElement;
@@ -96,7 +100,6 @@ describe('ColMagPersonajesDialog', () => {
         colMagPersonajeNombreElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagPersonajeNombre"]')); 
         colMagPersonajeEspecieElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagPersonajeEspecie"]')); 
         generoElement = fixture.debugElement.query(By.css('input[formcontrolname="Genero"]')); 
-        colMagCaseaNombreElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagCaseaNombre"]')); 
         colMagPersonajeFechaNacimientoElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagPersonajeFechaNacimiento"]')); 
         anoNcimientoElement = fixture.debugElement.query(By.css('input[formcontrolname="AnoNcimiento"]')); 
         colMagPersonajeAscendenciaElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagPersonajeAscendencia"]')); 
@@ -107,7 +110,8 @@ describe('ColMagPersonajesDialog', () => {
         colMagPersonajeProfesorElement = fixture.debugElement.query(By.css('mat-checkbox[formcontrolname="ColMagPersonajeProfesor"]')); 
         colMagPersonajeActorElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagPersonajeActor"]')); 
         colMagPersonajeViveElement = fixture.debugElement.query(By.css('mat-checkbox[formcontrolname="ColMagPersonajeVive"]')); 
-        colMagPersonajeimagenElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagPersonajeimagen"]')); 
+        colMagPersonajeImagenElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagPersonajeImagen"]')); 
+        colmagCasasCtrlElement = fixture.debugElement.query(By.css('input[formcontrolname="colMagCasaNombreCtrl"]')); 
 
 
         let buttons = fixture.debugElement.queryAll(By.css('mat-card-actions button')); 
@@ -134,7 +138,6 @@ describe('ColMagPersonajesDialog', () => {
         component.colMagPersonajesForm.controls.ColMagPersonajeNombre.setValue(rowBase.ColMagPersonajeNombre);
         component.colMagPersonajesForm.controls.ColMagPersonajeEspecie.setValue(rowBase.ColMagPersonajeEspecie);
         component.colMagPersonajesForm.controls.Genero.setValue(rowBase.Genero);
-        component.colMagPersonajesForm.controls.ColMagCaseaNombre.setValue(rowBase.ColMagCaseaNombre);
         component.colMagPersonajesForm.controls.ColMagPersonajeFechaNacimiento.setValue(rowBase.ColMagPersonajeFechaNacimiento);
         component.colMagPersonajesForm.controls.AnoNcimiento.setValue(rowBase.AnoNcimiento);
         component.colMagPersonajesForm.controls.ColMagPersonajeAscendencia.setValue(rowBase.ColMagPersonajeAscendencia);
@@ -145,7 +148,8 @@ describe('ColMagPersonajesDialog', () => {
         component.colMagPersonajesForm.controls.ColMagPersonajeProfesor.setValue(rowBase.ColMagPersonajeProfesor);
         component.colMagPersonajesForm.controls.ColMagPersonajeActor.setValue(rowBase.ColMagPersonajeActor);
         component.colMagPersonajesForm.controls.ColMagPersonajeVive.setValue(rowBase.ColMagPersonajeVive);
-        component.colMagPersonajesForm.controls.ColMagPersonajeimagen.setValue(rowBase.ColMagPersonajeimagen);
+        component.colMagPersonajesForm.controls.ColMagPersonajeImagen.setValue(rowBase.ColMagPersonajeImagen);
+        component.onSelectColMagCasaNombre(rowBase.ColmagCasas);
 
         fixture.detectChanges();
 
@@ -165,7 +169,7 @@ describe('ColMagPersonajesDialog', () => {
         expect(row.ColMagPersonajeNombre).toBe(rowBase.ColMagPersonajeNombre);
         expect(row.ColMagPersonajeEspecie).toBe(rowBase.ColMagPersonajeEspecie);
         expect(row.Genero).toBe(rowBase.Genero);
-        expect(row.ColMagCaseaNombre).toBe(rowBase.ColMagCaseaNombre);
+        expect(row.ColmagCasaId).toBe(rowBase.ColmagCasaId);
         expect(row.ColMagPersonajeFechaNacimiento).toBe(rowBase.ColMagPersonajeFechaNacimiento);
         expect(row.AnoNcimiento).toBe(rowBase.AnoNcimiento);
         expect(row.ColMagPersonajeAscendencia).toBe(rowBase.ColMagPersonajeAscendencia);
@@ -176,7 +180,7 @@ describe('ColMagPersonajesDialog', () => {
         expect(row.ColMagPersonajeProfesor).toBe(rowBase.ColMagPersonajeProfesor);
         expect(row.ColMagPersonajeActor).toBe(rowBase.ColMagPersonajeActor);
         expect(row.ColMagPersonajeVive).toBe(rowBase.ColMagPersonajeVive);
-        expect(row.ColMagPersonajeimagen).toBe(rowBase.ColMagPersonajeimagen);
+        expect(row.ColMagPersonajeImagen).toBe(rowBase.ColMagPersonajeImagen);
 
     });
 
@@ -207,7 +211,7 @@ describe('ColMagPersonajesDialog', () => {
         expect(row.ColMagPersonajeNombre).toBe(rowBase.ColMagPersonajeNombre);
         expect(row.ColMagPersonajeEspecie).toBe(rowBase.ColMagPersonajeEspecie);
         expect(row.Genero).toBe(rowBase.Genero);
-        expect(row.ColMagCaseaNombre).toBe(rowBase.ColMagCaseaNombre);
+        expect(row.ColmagCasaId).toBe(rowBase.ColmagCasaId);
         expect(row.ColMagPersonajeFechaNacimiento).toBe(rowBase.ColMagPersonajeFechaNacimiento);
         expect(row.AnoNcimiento).toBe(rowBase.AnoNcimiento);
         expect(row.ColMagPersonajeAscendencia).toBe(rowBase.ColMagPersonajeAscendencia);
@@ -218,7 +222,7 @@ describe('ColMagPersonajesDialog', () => {
         expect(row.ColMagPersonajeProfesor).toBe(rowBase.ColMagPersonajeProfesor);
         expect(row.ColMagPersonajeActor).toBe(rowBase.ColMagPersonajeActor);
         expect(row.ColMagPersonajeVive).toBe(rowBase.ColMagPersonajeVive);
-        expect(row.ColMagPersonajeimagen).toBe(rowBase.ColMagPersonajeimagen);
+        expect(row.ColMagPersonajeImagen).toBe(rowBase.ColMagPersonajeImagen);
 
     });
 

@@ -5,8 +5,8 @@ export class ColMagPersonajesModel {
     public ColMagPersonajeNombre: string;
     public ColMagPersonajeEspecie: string;
     public Genero: string;
-    public ColMagCaseaNombre: string;
-    public ColMagPersonajeFechaNacimiento: string;
+    public ColmagCasaId: number;
+    public ColMagPersonajeFechaNacimiento: Date;
     public AnoNcimiento: number;
     public ColMagPersonajeAscendencia: string;
     public ColMagPersonajeColorOjos: string;
@@ -16,7 +16,8 @@ export class ColMagPersonajesModel {
     public ColMagPersonajeProfesor: Boolean;
     public ColMagPersonajeActor: string;
     public ColMagPersonajeVive: Boolean;
-    public ColMagPersonajeimagen: string;
+    public ColMagPersonajeImagen: string;
+    public ColmagCasas: any = {};
     public ColMagVaritaMagica: Array<ColMagVaritaMagicaModel> = [];
     public _secuencia: number;
     public _estado: string = 'N';
@@ -29,7 +30,7 @@ export class ColMagPersonajesModel {
             this.ColMagPersonajeNombre = json.ColMagPersonajeNombre;
             this.ColMagPersonajeEspecie = json.ColMagPersonajeEspecie;
             this.Genero = json.Genero;
-            this.ColMagCaseaNombre = json.ColMagCaseaNombre;
+            this.ColmagCasaId = json.ColmagCasaId;
             this.ColMagPersonajeFechaNacimiento = json.ColMagPersonajeFechaNacimiento;
             this.AnoNcimiento = json.AnoNcimiento;
             this.ColMagPersonajeAscendencia = json.ColMagPersonajeAscendencia;
@@ -40,7 +41,8 @@ export class ColMagPersonajesModel {
             this.ColMagPersonajeProfesor = json.ColMagPersonajeProfesor;
             this.ColMagPersonajeActor = json.ColMagPersonajeActor;
             this.ColMagPersonajeVive = json.ColMagPersonajeVive;
-            this.ColMagPersonajeimagen = json.ColMagPersonajeimagen;
+            this.ColMagPersonajeImagen = json.ColMagPersonajeImagen;
+            this.ColmagCasas = json.ColmagCasas;
             this.ColMagVaritaMagica = json.ColMagVaritaMagica;
         }
     }
@@ -52,6 +54,7 @@ export class ColMagPersonajesModel {
         delete rowCloned._estado;
         delete rowCloned._id;
         delete rowCloned._v;
+        delete rowCloned.ColmagCasas;
         delete rowCloned.ColMagVaritaMagica;
 
         return rowCloned;
@@ -66,7 +69,7 @@ export class ColMagPersonajesModel {
               ColMagPersonajeNombre: dato.ColMagPersonajeNombre,
               ColMagPersonajeEspecie: dato.ColMagPersonajeEspecie,
               Genero: dato.Genero,
-              ColMagCaseaNombre: dato.ColMagCaseaNombre,
+              ColmagCasaId: dato.ColmagCasaId,
               ColMagPersonajeFechaNacimiento: dato.ColMagPersonajeFechaNacimiento,
               AnoNcimiento: dato.AnoNcimiento,
               ColMagPersonajeAscendencia: dato.ColMagPersonajeAscendencia,
@@ -77,7 +80,8 @@ export class ColMagPersonajesModel {
               ColMagPersonajeProfesor: dato.ColMagPersonajeProfesor,
               ColMagPersonajeActor: dato.ColMagPersonajeActor,
               ColMagPersonajeVive: dato.ColMagPersonajeVive,
-              ColMagPersonajeimagen: dato.ColMagPersonajeimagen
+              ColMagPersonajeImagen: dato.ColMagPersonajeImagen,
+              ColmagCasas:  dato.ColmagCasas
 
             };		 
             dataExcel.push(registro);		 
@@ -92,7 +96,7 @@ export class ColMagPersonajesModel {
         result += `${separator}${this.ColMagPersonajeNombre}`;
         result += `${separator}${this.ColMagPersonajeEspecie}`;
         result += `${separator}${this.Genero}`;
-        result += `${separator}${this.ColMagCaseaNombre}`;
+        result += `${separator}${this.ColmagCasaId}`;
         result += `${separator}${this.ColMagPersonajeFechaNacimiento}`;
         result += `${separator}${this.AnoNcimiento}`;
         result += `${separator}${this.ColMagPersonajeAscendencia}`;
@@ -103,7 +107,7 @@ export class ColMagPersonajesModel {
         result += `${separator}${this.ColMagPersonajeProfesor}`;
         result += `${separator}${this.ColMagPersonajeActor}`;
         result += `${separator}${this.ColMagPersonajeVive}`;
-        result += `${separator}${this.ColMagPersonajeimagen}`;
+        result += `${separator}${this.ColMagPersonajeImagen}`;
 
         return result.substring(separator.length);
     }
@@ -115,8 +119,8 @@ export class ColMagPersonajesModel {
         this.ColMagPersonajeNombre = result[1];
         this.ColMagPersonajeEspecie = result[2];
         this.Genero = result[3];
-        this.ColMagCaseaNombre = result[4];
-        this.ColMagPersonajeFechaNacimiento = result[5];
+        this.ColmagCasaId = parseInt(result[4]);
+        this.ColMagPersonajeFechaNacimiento = new Date(result[5]);
         this.AnoNcimiento = parseInt(result[6]);
         this.ColMagPersonajeAscendencia = result[7];
         this.ColMagPersonajeColorOjos = result[8];
@@ -126,7 +130,7 @@ export class ColMagPersonajesModel {
         this.ColMagPersonajeProfesor = new Boolean(result[12]);
         this.ColMagPersonajeActor = result[13];
         this.ColMagPersonajeVive = new Boolean(result[14]);
-        this.ColMagPersonajeimagen = result[15];
+        this.ColMagPersonajeImagen = result[15];
 
         return this;
     }

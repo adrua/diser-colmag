@@ -43,26 +43,26 @@
             <mat-cell *matCellDef="let row">{{row.Genero}}</mat-cell>
         </ng-container>
 
-        <!-- Casea: Column -->
-        <ng-container matColumnDef="colMagCaseaNombre">
+        <!-- Casa: Column -->
+        <ng-container matColumnDef="colmagCasas/colMagCasaNombre">
             <mat-header-cell *matHeaderCellDef disableClear>
-                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagCaseaNombre', 'Varchar', 'ColMagCaseaNombre', ':')">
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagCasaNombre', 'Varchar', 'ColmagCasas/ColMagCasaNombre', ':')">
                     <mat-icon>more_vert</mat-icon>
                 </button>
-                <span mat-sort-header>{{ "colMagPersonajes.ColMagCaseaNombre" | translate }}:</span>
+                <span mat-sort-header>{{ "colMagPersonajes.ColMagCasaNombre" | translate }}:</span>
             </mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.ColMagCaseaNombre}}</mat-cell>
+            <mat-cell *matCellDef="let row"> {{row.ColmagCasas?.ColMagCasaNombre}} </mat-cell>
         </ng-container>
 
         <!-- Fecha Nacimiento: Column -->
         <ng-container matColumnDef="colMagPersonajeFechaNacimiento">
             <mat-header-cell *matHeaderCellDef disableClear>
-                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeFechaNacimiento', 'Varchar', 'ColMagPersonajeFechaNacimiento', ':')">
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeFechaNacimiento', 'Date', 'ColMagPersonajeFechaNacimiento', ':')">
                     <mat-icon>more_vert</mat-icon>
                 </button>
                 <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajeFechaNacimiento" | translate }}:</span>
             </mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.ColMagPersonajeFechaNacimiento}}</mat-cell>
+            <mat-cell *matCellDef="let row"> {{row.ColMagPersonajeFechaNacimiento | date}} </mat-cell>
         </ng-container>
 
         <!-- Año Ncimiento: Column -->
@@ -170,15 +170,15 @@
             </mat-cell>
         </ng-container>
 
-        <!-- imagen: Column -->
-        <ng-container matColumnDef="colMagPersonajeimagen">
+        <!-- Imagen: Column -->
+        <ng-container matColumnDef="colMagPersonajeImagen">
             <mat-header-cell *matHeaderCellDef disableClear>
-                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeimagen', 'Varchar', 'ColMagPersonajeimagen', ':')">
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeImagen', 'Varchar', 'ColMagPersonajeImagen', ':')">
                     <mat-icon>more_vert</mat-icon>
                 </button>
-                <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajeimagen" | translate }}:</span>
+                <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajeImagen" | translate }}:</span>
             </mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.ColMagPersonajeimagen}}</mat-cell>
+            <mat-cell *matCellDef="let row">{{row.ColMagPersonajeImagen}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="expandedDetail">

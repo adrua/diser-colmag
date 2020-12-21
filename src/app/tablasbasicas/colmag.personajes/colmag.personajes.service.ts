@@ -31,6 +31,8 @@ export class ColMagPersonajesService {
     getAll(): Observable<any> {
         const params: any = {};		 
 
+        params["$expand"] = "ColmagCasas";
+
         return this.http.get<any>(this.colMagPersonajesUrl, { params }).pipe(
             retry(3),
             tap(row => this.log('fetched ColMagPersonajes')),
@@ -59,6 +61,8 @@ export class ColMagPersonajesService {
         }
         
         params["$count"] = "true";
+
+        params["$expand"] = "ColmagCasas";
 
         return this.http.get<any>(this.colMagPersonajesUrl, { params }).pipe(    
             retry(3),
@@ -127,6 +131,30 @@ export class ColMagPersonajesService {
         } else {
             return of({});
         }
+    }
+    filterColMagCasaNombre(val: string, pageSize: number = 10): Observable<any> {
+        let sUrl = `${environment.dataServiceUrl}/odata/ColmagCasas`;
+
+        let params: any = { };
+        params["$filter"] = `contains(ColMagCasaNombre,'${val}')`;
+        params["$top"] = pageSize;
+
+        return this.http.get<any>(sUrl, {params: params}).pipe(
+            retry(3),
+            tap(_ => this.log(`filter ColMagCasaNombre id=${val}`)),
+            catchError((error) => this.handleError("filterColMagCasaNombre", error))
+        );
+
+    }
+
+    getByIdColMagCasaNombre(colmagCasaId: number): Observable<any> {
+        let sUrl = `${environment.dataServiceUrl}/odata/ColmagCasas(ColmagCasaId=${colmagCasaId})`;
+
+        return this.http.get<any>(sUrl, { }).pipe(
+            retry(3),
+            tap(_ => this.log(`getById ColMagCasaNombre ColmagCasaId=${colmagCasaId}`)),
+            catchError((error) => this.handleError("getByIdColMagCasaNombre", error))
+        );
     }
 
     private handleError(operation = "operation", result?: any) {

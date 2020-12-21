@@ -25,6 +25,17 @@ export class ColMagPersonajesDialog {
 
     colMagPersonajesForm: FormGroup;
 
+    colMagCasaNombreCtrl: FormControl = new FormControl(["", [
+        (control: AbstractControl): {[key: string]: any} | null => {
+            const selected = !!control["selected"];
+            let result = null;
+            if (control.value !== "" && !selected) {
+                result = {"colMagCasaNombreCtrl": true };
+            }
+            return result;
+        }] ]);
+
+    filteredColMagCasaNombre: Array<any> = [];
 
     _proc: boolean = false;
     _status: boolean = false;
@@ -50,8 +61,8 @@ export class ColMagPersonajesDialog {
             'ColMagPersonajeNombre': [ this.selectedColMagPersonajes.ColMagPersonajeNombre, [ Validators.required, Validators.maxLength(75), Validators.pattern('^([^\\s]|\\s[^\\s])+$') ] ],
             'ColMagPersonajeEspecie': [ this.selectedColMagPersonajes.ColMagPersonajeEspecie, [ Validators.required, Validators.maxLength(20), Validators.pattern('^([^\\s]|\\s[^\\s])+$') ] ],
             'Genero': [ this.selectedColMagPersonajes.Genero, [ Validators.required, Validators.maxLength(10), Validators.pattern('^([^\\s]|\\s[^\\s])+$') ] ],
-            'ColMagCaseaNombre': [ this.selectedColMagPersonajes.ColMagCaseaNombre, [ Validators.required, Validators.maxLength(10), Validators.pattern('^([^\\s]|\\s[^\\s])+$') ] ],
-            'ColMagPersonajeFechaNacimiento': [ this.selectedColMagPersonajes.ColMagPersonajeFechaNacimiento, [ Validators.required, Validators.maxLength(20), Validators.pattern('^([^\\s]|\\s[^\\s])+$') ] ],
+            'ColmagCasaId': [ this.selectedColMagPersonajes.ColmagCasaId, [ Validators.required, Validators.maxLength(4), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
+            'ColMagPersonajeFechaNacimiento': [ this.selectedColMagPersonajes.ColMagPersonajeFechaNacimiento, [ Validators.required ] ],
             'AnoNcimiento': [ this.selectedColMagPersonajes.AnoNcimiento, [ Validators.required, Validators.maxLength(4), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
             'ColMagPersonajeAscendencia': [ this.selectedColMagPersonajes.ColMagPersonajeAscendencia, [ Validators.required, Validators.maxLength(29), Validators.pattern('^([^\\s]|\\s[^\\s])+$') ] ],
             'ColMagPersonajeColorOjos': [ this.selectedColMagPersonajes.ColMagPersonajeColorOjos, [ Validators.required, Validators.maxLength(20), Validators.pattern('^([^\\s]|\\s[^\\s])+$') ] ],
@@ -61,7 +72,7 @@ export class ColMagPersonajesDialog {
             'ColMagPersonajeProfesor': [ this.selectedColMagPersonajes.ColMagPersonajeProfesor, [ Validators.required ] ],
             'ColMagPersonajeActor': [ this.selectedColMagPersonajes.ColMagPersonajeActor, [ Validators.required, Validators.maxLength(75), Validators.pattern('^([^\\s]|\\s[^\\s])+$') ] ],
             'ColMagPersonajeVive': [ this.selectedColMagPersonajes.ColMagPersonajeVive, [ Validators.required ] ],
-            'ColMagPersonajeimagen': [ this.selectedColMagPersonajes.ColMagPersonajeimagen, [ Validators.required, Validators.pattern('^(http[s]?:\\/\\/)[a-zA-Z][a-zA-Z0-9\\-]*(\\.[a-zA-Z][a-zA-Z0-9\\-]*)+([\\?\\:\\/].*)?$') ] ],
+            'ColMagPersonajeImagen': [ this.selectedColMagPersonajes.ColMagPersonajeImagen, [ Validators.required, Validators.pattern('^(http[s]?:\\/\\/)[a-zA-Z][a-zA-Z0-9\\-]*(\\.[a-zA-Z][a-zA-Z0-9\\-]*)+([\\?\\:\\/].*)?$') ] ],
             '_estado': [ this.selectedColMagPersonajes._estado, Validators.required ]
         }, {
                 validators: (formGroup: FormGroup): ValidationErrors | null => {
@@ -71,6 +82,14 @@ export class ColMagPersonajesDialog {
                     return validationErrors;
                 }
         });
+
+        this.colMagCasaNombreCtrl.setValue(this.selectedColMagPersonajes.ColmagCasas?.ColMagCasaNombre || '');
+        this.colMagCasaNombreCtrl["ColmagCasas"] = this.selectedColMagPersonajes.ColmagCasas;
+        this.colMagCasaNombreCtrl.valueChanges
+            .pipe(
+                startWith(''),
+                switchMap((data) => this.colMagPersonajesService.filterColMagCasaNombre(data))
+            ).subscribe((data) => this.filteredColMagCasaNombre = data.value);
 
         this.colMagPersonajesForm.valueChanges.subscribe((data) => {
 
@@ -95,6 +114,7 @@ export class ColMagPersonajesDialog {
                         formData.ColMagPersonajeId = data.ColMagPersonajeId;
                     }
 
+                    formData.ColmagCasas = this.colMagCasaNombreCtrl["ColmagCasas"];
                     this.dialogRef.close({
                         data: formData
                     });
@@ -154,6 +174,23 @@ export class ColMagPersonajesDialog {
                 this.dialogRef.close(); 
             }
         });             
+    }
+
+    onKeydownColMagCasaNombre(e: Event) {
+        this.colMagCasaNombreCtrl["selected"] = false;
+
+        this.colMagPersonajesForm.patchValue({
+            ColmagCasaId: null
+        });
+    }
+
+    onSelectColMagCasaNombre(opt: any){
+        this.colMagCasaNombreCtrl["selected"] = true;
+        this.colMagCasaNombreCtrl["ColmagCasas"] = opt;
+
+        this.colMagPersonajesForm.patchValue({
+            ColmagCasaId: opt.ColmagCasaId
+        });
     }
 
     getErrorMessages(): string {
