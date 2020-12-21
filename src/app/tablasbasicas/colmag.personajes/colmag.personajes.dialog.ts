@@ -64,7 +64,7 @@ export class ColMagPersonajesDialog {
             'ColmagCasaId': [ this.selectedColMagPersonajes.ColmagCasaId, [ Validators.required, Validators.maxLength(4), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
             'ColMagPersonajeFechaNacimiento': [ this.selectedColMagPersonajes.ColMagPersonajeFechaNacimiento, [  ] ],
             'ColMagPersonajeAnoNacimiento': [ this.selectedColMagPersonajes.ColMagPersonajeAnoNacimiento, [ Validators.maxLength(4), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
-            'ColMagPersonajeAscendencia': [ this.selectedColMagPersonajes.ColMagPersonajeAscendencia, [ Validators.required, Validators.maxLength(29), Validators.pattern('^([^\\s]|\\s[^\\s])+$') ] ],
+            'ColMagPersonajeAscendencia': [ this.selectedColMagPersonajes.ColMagPersonajeAscendencia, [ Validators.maxLength(29) ] ],
             'ColMagPersonajeColorOjos': [ this.selectedColMagPersonajes.ColMagPersonajeColorOjos, [ Validators.required, Validators.maxLength(20), Validators.pattern('^([^\\s]|\\s[^\\s])+$') ] ],
             'ColMagPersonajeColorCabello': [ this.selectedColMagPersonajes.ColMagPersonajeColorCabello, [ Validators.required, Validators.maxLength(20), Validators.pattern('^([^\\s]|\\s[^\\s])+$') ] ],
             'ColMagPersonajePatronus': [ this.selectedColMagPersonajes.ColMagPersonajePatronus, [ Validators.maxLength(30) ] ],

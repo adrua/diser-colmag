@@ -2,7 +2,7 @@ export class ColMagVaritaMagicaModel {
     public ColMagPersonajeId: number;
     public ColMagVaritaMagicaId: number;
     public ColMagVaritaMagicaComp: string;
-    public Madera: string;
+    public ColMagVaritaMagicaMadera: string;
     public ColMagVaritaMagicaAlma: string;
     public ColMagVaritaMagicaLongitud: number = 0.0;
     public _secuencia: number;
@@ -15,7 +15,7 @@ export class ColMagVaritaMagicaModel {
             this.ColMagPersonajeId = json.ColMagPersonajeId;
             this.ColMagVaritaMagicaId = json.ColMagVaritaMagicaId;
             this.ColMagVaritaMagicaComp =  json.ColMagVaritaMagicaComp;
-            this.Madera = json.Madera;
+            this.ColMagVaritaMagicaMadera = json.ColMagVaritaMagicaMadera;
             this.ColMagVaritaMagicaAlma = json.ColMagVaritaMagicaAlma;
             this.ColMagVaritaMagicaLongitud = json.ColMagVaritaMagicaLongitud;
         }
@@ -40,7 +40,7 @@ export class ColMagVaritaMagicaModel {
               ColMagPersonajeId: dato.ColMagPersonajeId,
               ColMagVaritaMagicaId: dato.ColMagVaritaMagicaId,
               ColMagVaritaMagicaComp:  dato.ColMagVaritaMagicaComp,
-              Madera: dato.Madera,
+              ColMagVaritaMagicaMadera: dato.ColMagVaritaMagicaMadera,
               ColMagVaritaMagicaAlma: dato.ColMagVaritaMagicaAlma,
               ColMagVaritaMagicaLongitud: dato.ColMagVaritaMagicaLongitud
 
@@ -55,7 +55,7 @@ export class ColMagVaritaMagicaModel {
 
         result += `${separator}${this.ColMagPersonajeId}`;
         result += `${separator}${this.ColMagVaritaMagicaId}`;
-        result += `${separator}${this.Madera}`;
+        result += `${separator}${this.ColMagVaritaMagicaMadera}`;
         result += `${separator}${this.ColMagVaritaMagicaAlma}`;
         result += `${separator}${this.ColMagVaritaMagicaLongitud}`;
 
@@ -67,7 +67,7 @@ export class ColMagVaritaMagicaModel {
 
         this.ColMagPersonajeId = parseInt(result[0]);
         this.ColMagVaritaMagicaId = parseInt(result[1]);
-        this.Madera = result[2];
+        this.ColMagVaritaMagicaMadera = result[2];
         this.ColMagVaritaMagicaAlma = result[3];
         this.ColMagVaritaMagicaLongitud = parseFloat(result[4]);
 

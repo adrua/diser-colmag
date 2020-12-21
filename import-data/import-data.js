@@ -70,9 +70,9 @@ let personajeAggregar = async (personaje) => {
         ColMagPersonajeNombre: personaje.name,
         ColMagPersonajeEspecie: personaje.species,
         Genero: personaje.gender,
-        ColmagCasaId: casas[personaje.house],
+        ColmagCasaId: casas[personaje.house] || 4,
         ColMagPersonajeFechaNacimiento: fecha,
-        ColMagPersonajeAnoNacimiento: personaje.yearOfBirth,
+        ColMagPersonajeAnoNacimiento: personaje.yearOfBirth || 0,
         ColMagPersonajeAscendencia: personaje.ancestry,
         ColMagPersonajeColorOjos: personaje.eyeColour,
         ColMagPersonajeColorCabello: personaje.hairColour,
@@ -81,7 +81,7 @@ let personajeAggregar = async (personaje) => {
         ColMagPersonajeProfesor: personaje.hogwartsStaff,
         ColMagPersonajeActor: personaje.actor,
         ColMagPersonajeVive: personaje.alive,
-        ColMagPersonajeimagen: personaje.image,
+        ColMagPersonajeImagen: personaje.image,
         ColMagVaritaMagica: [
             {
                 ColMagPersonajeId: id,

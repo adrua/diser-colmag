@@ -138,7 +138,6 @@ describe('ColMagPersonajesDialog', () => {
         component.colMagPersonajesForm.controls.ColMagPersonajeNombre.setValue(rowBase.ColMagPersonajeNombre);
         component.colMagPersonajesForm.controls.ColMagPersonajeEspecie.setValue(rowBase.ColMagPersonajeEspecie);
         component.colMagPersonajesForm.controls.Genero.setValue(rowBase.Genero);
-        component.colMagPersonajesForm.controls.ColMagPersonajeAscendencia.setValue(rowBase.ColMagPersonajeAscendencia);
         component.colMagPersonajesForm.controls.ColMagPersonajeColorOjos.setValue(rowBase.ColMagPersonajeColorOjos);
         component.colMagPersonajesForm.controls.ColMagPersonajeColorCabello.setValue(rowBase.ColMagPersonajeColorCabello);
         component.colMagPersonajesForm.controls.ColMagPersonajeEstudiante.setValue(rowBase.ColMagPersonajeEstudiante);
@@ -158,6 +157,7 @@ describe('ColMagPersonajesDialog', () => {
 
         component.colMagPersonajesForm.controls.ColMagPersonajeFechaNacimiento.setValue(rowBase.ColMagPersonajeFechaNacimiento);
         component.colMagPersonajesForm.controls.ColMagPersonajeAnoNacimiento.setValue(rowBase.ColMagPersonajeAnoNacimiento);
+        component.colMagPersonajesForm.controls.ColMagPersonajeAscendencia.setValue(rowBase.ColMagPersonajeAscendencia);
         component.colMagPersonajesForm.controls.ColMagPersonajePatronus.setValue(rowBase.ColMagPersonajePatronus);
 
         expect(component.getErrorMessages()).toBe("No hay errores. Listo para salvar");

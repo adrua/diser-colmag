@@ -23,7 +23,7 @@ describe('ColMagVaritaMagicaService', () => {
         ColMagPersonajeId: 1234,
         ColMagVaritaMagicaId: 1234,
         ColMagVaritaMagica_Comp: '', //convert(varchar(max),ColMagPersonajeId) || '/' || convert(varchar(max),ColMagVaritaMagicaId) 
-        Madera: `holly`,
+        ColMagVaritaMagicaMadera: `holly`,
         ColMagVaritaMagicaAlma: `phoenix feather`,
         ColMagVaritaMagicaLongitud: 11.00,
         _estado: ''
@@ -42,7 +42,7 @@ describe('ColMagVaritaMagicaService', () => {
         service.getById(row.ColMagPersonajeId, row.ColMagVaritaMagicaId).subscribe((value) => {
 			    expect(value.ColMagPersonajeId).toBe(row.ColMagPersonajeId);
 			    expect(value.ColMagVaritaMagicaId).toBe(row.ColMagVaritaMagicaId);
-			    expect(value.Madera).toBe(row.Madera);
+			    expect(value.ColMagVaritaMagicaMadera).toBe(row.ColMagVaritaMagicaMadera);
 			    expect(value.ColMagVaritaMagicaAlma).toBe(row.ColMagVaritaMagicaAlma);
 			    expect(value.ColMagVaritaMagicaLongitud).toBe(row.ColMagVaritaMagicaLongitud);
           done();
@@ -116,7 +116,7 @@ describe('ColMagVaritaMagicaService', () => {
 
         //Add - ColMagVaritaMagica
         service.save(row, row).subscribe(value => {
-			    expect(value.Madera).toBe(row.Madera);
+			    expect(value.ColMagVaritaMagicaMadera).toBe(row.ColMagVaritaMagicaMadera);
 			    expect(value.ColMagVaritaMagicaAlma).toBe(row.ColMagVaritaMagicaAlma);
 			    expect(value.ColMagVaritaMagicaLongitud).toBe(row.ColMagVaritaMagicaLongitud);
             done();
@@ -133,7 +133,7 @@ describe('ColMagVaritaMagicaService', () => {
 
         //Update - ColMagVaritaMagica
         service.save(row, row).subscribe(value => {
-			    expect(value.Madera).toBe(row.Madera);
+			    expect(value.ColMagVaritaMagicaMadera).toBe(row.ColMagVaritaMagicaMadera);
 			    expect(value.ColMagVaritaMagicaAlma).toBe(row.ColMagVaritaMagicaAlma);
 			    expect(value.ColMagVaritaMagicaLongitud).toBe(row.ColMagVaritaMagicaLongitud);
             done();

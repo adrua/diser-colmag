@@ -29,7 +29,7 @@ export class ColMagVaritaMagicaTable implements AfterViewInit {
     selectedIndex: number = 0;
     originalRow: ColMagVaritaMagicaModel;
 
-    public displayedColumns: string[] = ['colMagVaritaMagicaId', 'madera', 'colMagVaritaMagicaAlma', 'colMagVaritaMagicaLongitud'];
+    public displayedColumns: string[] = ['colMagVaritaMagicaId', 'colMagVaritaMagicaMadera', 'colMagVaritaMagicaAlma', 'colMagVaritaMagicaLongitud'];
 
     public conditionsList = conditionsLists.Varchar;
     public searchValue: any = {};

@@ -76,13 +76,13 @@
             <mat-cell *matCellDef="let row">{{row.ColMagPersonajeAnoNacimiento}}</mat-cell>
         </ng-container>
 
-        <!-- Ascendencia: Column -->
+        <!-- Ascendencia? Column -->
         <ng-container matColumnDef="colMagPersonajeAscendencia">
             <mat-header-cell *matHeaderCellDef disableClear>
-                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeAscendencia', 'Varchar', 'ColMagPersonajeAscendencia', ':')">
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeAscendencia', 'Varchar', 'ColMagPersonajeAscendencia', '?')">
                     <mat-icon>more_vert</mat-icon>
                 </button>
-                <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajeAscendencia" | translate }}:</span>
+                <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajeAscendencia" | translate }}?</span>
             </mat-header-cell>
             <mat-cell *matCellDef="let row">{{row.ColMagPersonajeAscendencia}}</mat-cell>
         </ng-container>

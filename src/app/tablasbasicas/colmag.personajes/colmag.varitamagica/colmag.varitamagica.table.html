@@ -12,14 +12,14 @@
         </ng-container>
 
         <!-- Madera: Column -->
-        <ng-container matColumnDef="madera">
+        <ng-container matColumnDef="colMagVaritaMagicaMadera">
             <mat-header-cell *matHeaderCellDef disableClear>
-                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'Madera', 'Varchar', 'Madera', ':')">
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagVaritaMagicaMadera', 'Varchar', 'ColMagVaritaMagicaMadera', ':')">
                     <mat-icon>more_vert</mat-icon>
                 </button>
-                <span mat-sort-header>{{ "colMagVaritaMagica.Madera" | translate }}:</span>
+                <span mat-sort-header>{{ "colMagVaritaMagica.ColMagVaritaMagicaMadera" | translate }}:</span>
             </mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.Madera}}</mat-cell>
+            <mat-cell *matCellDef="let row">{{row.ColMagVaritaMagicaMadera}}</mat-cell>
         </ng-container>
 
         <!-- Alma: Column -->

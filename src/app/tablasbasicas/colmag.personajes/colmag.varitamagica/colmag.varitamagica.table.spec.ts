@@ -22,7 +22,7 @@ describe('ColMagVaritaMagica_Table', () => {
         ColMagPersonajeId: 1234,
         ColMagVaritaMagicaId: 1234,
         ColMagVaritaMagica_Comp: '', //convert(varchar(max),ColMagPersonajeId) || '/' || convert(varchar(max),ColMagVaritaMagicaId) 
-        Madera: `holly`,
+        ColMagVaritaMagicaMadera: `holly`,
         ColMagVaritaMagicaAlma: `phoenix feather`,
         ColMagVaritaMagicaLongitud: 11.00,
         _estado: ''

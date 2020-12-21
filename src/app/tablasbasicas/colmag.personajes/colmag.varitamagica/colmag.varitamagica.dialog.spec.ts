@@ -28,14 +28,14 @@ describe('ColMagVaritaMagicaDialog', () => {
         ColMagPersonajeId: 1234,
         ColMagVaritaMagicaId: 1234,
         ColMagVaritaMagicaComp: '', //convert(varchar(max),ColMagPersonajeId) || '/' || convert(varchar(max),ColMagVaritaMagicaId) 
-        Madera: `holly`,
+        ColMagVaritaMagicaMadera: `holly`,
         ColMagVaritaMagicaAlma: `phoenix feather`,
         ColMagVaritaMagicaLongitud: 11.00,
         _estado: ''
     };
 
     let colMagVaritaMagicaIdElement: DebugElement; 
-    let maderaElement: DebugElement; 
+    let colMagVaritaMagicaMaderaElement: DebugElement; 
     let colMagVaritaMagicaAlmaElement: DebugElement; 
     let colMagVaritaMagicaLongitudElement: DebugElement; 
 
@@ -74,7 +74,7 @@ describe('ColMagVaritaMagicaDialog', () => {
         component = fixture.componentInstance;
         
         colMagVaritaMagicaIdElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagVaritaMagicaId"]')); 
-        maderaElement = fixture.debugElement.query(By.css('input[formcontrolname="Madera"]')); 
+        colMagVaritaMagicaMaderaElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagVaritaMagicaMadera"]')); 
         colMagVaritaMagicaAlmaElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagVaritaMagicaAlma"]')); 
         colMagVaritaMagicaLongitudElement = fixture.debugElement.query(By.css('input[formcontrolname="ColMagVaritaMagicaLongitud"]')); 
 
@@ -101,7 +101,7 @@ describe('ColMagVaritaMagicaDialog', () => {
         expect(btnCancelarElement.nativeElement.disabled).toBeFalsy();
 
         component.colMagVaritaMagicaForm.controls.ColMagVaritaMagicaId.setValue(rowBase.ColMagVaritaMagicaId);
-        component.colMagVaritaMagicaForm.controls.Madera.setValue(rowBase.Madera);
+        component.colMagVaritaMagicaForm.controls.ColMagVaritaMagicaMadera.setValue(rowBase.ColMagVaritaMagicaMadera);
         component.colMagVaritaMagicaForm.controls.ColMagVaritaMagicaAlma.setValue(rowBase.ColMagVaritaMagicaAlma);
         component.colMagVaritaMagicaForm.controls.ColMagVaritaMagicaLongitud.setValue(rowBase.ColMagVaritaMagicaLongitud);
 
@@ -122,7 +122,7 @@ describe('ColMagVaritaMagicaDialog', () => {
         expect(row.ColMagPersonajeId).toBe(rowBase.ColMagPersonajeId);
         expect(row.ColMagVaritaMagicaId).toBe(rowBase.ColMagVaritaMagicaId);
         expect(row.ColMagVaritaMagica).toBe(rowBase.ColMagVaritaMagica);
-        expect(row.Madera).toBe(rowBase.Madera);
+        expect(row.ColMagVaritaMagicaMadera).toBe(rowBase.ColMagVaritaMagicaMadera);
         expect(row.ColMagVaritaMagicaAlma).toBe(rowBase.ColMagVaritaMagicaAlma);
         expect(row.ColMagVaritaMagicaLongitud).toBe(rowBase.ColMagVaritaMagicaLongitud);
 
@@ -154,7 +154,7 @@ describe('ColMagVaritaMagicaDialog', () => {
         expect(row.ColMagPersonajeId).toBe(rowBase.ColMagPersonajeId);
         expect(row.ColMagVaritaMagicaId).toBe(rowBase.ColMagVaritaMagicaId);
         expect(row.ColMagVaritaMagica).toBe(rowBase.ColMagVaritaMagica);
-        expect(row.Madera).toBe(rowBase.Madera);
+        expect(row.ColMagVaritaMagicaMadera).toBe(rowBase.ColMagVaritaMagicaMadera);
         expect(row.ColMagVaritaMagicaAlma).toBe(rowBase.ColMagVaritaMagicaAlma);
         expect(row.ColMagVaritaMagicaLongitud).toBe(rowBase.ColMagVaritaMagicaLongitud);
 
