@@ -46,12 +46,12 @@
         <!-- Casa: Column -->
         <ng-container matColumnDef="colmagCasas/colMagCasaNombre">
             <mat-header-cell *matHeaderCellDef disableClear>
-                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagCasaNombre', 'Varchar', 'ColmagCasas/ColMagCasaNombre', ':')">
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColmagCasaNombre', 'Varchar', 'ColmagCasas/ColmagCasaNombre', ':')">
                     <mat-icon>more_vert</mat-icon>
                 </button>
                 <span mat-sort-header>{{ "colMagPersonajes.ColMagCasaNombre" | translate }}:</span>
             </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.ColmagCasas?.ColMagCasaNombre}} </mat-cell>
+            <mat-cell *matCellDef="let row"> {{row.ColmagCasas?.ColmagCasaNombre}} </mat-cell>
         </ng-container>
 
         <!-- Fecha Nacimiento? Column -->

@@ -16,7 +16,7 @@ declare var lastError: HttpErrorResponse;
 
 @Component({
   templateUrl: './colmag.personajes.dialog.html',
-  // styleUrls: ['./colmag.personajes.dialog.css'],
+  styleUrls: ['./colmag.personajes.dialog.css'],
   providers: [ColMagPersonajesService]
 })
 export class ColMagPersonajesDialog {
@@ -83,7 +83,7 @@ export class ColMagPersonajesDialog {
                 }
         });
 
-        this.colMagCasaNombreCtrl.setValue(this.selectedColMagPersonajes.ColmagCasas?.ColMagCasaNombre || '');
+        this.colMagCasaNombreCtrl.setValue(this.selectedColMagPersonajes.ColmagCasas?.ColmagCasaNombre || '');
         this.colMagCasaNombreCtrl["ColmagCasas"] = this.selectedColMagPersonajes.ColmagCasas;
         this.colMagCasaNombreCtrl.valueChanges
             .pipe(

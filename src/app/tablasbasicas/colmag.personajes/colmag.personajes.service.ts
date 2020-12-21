@@ -132,6 +132,7 @@ export class ColMagPersonajesService {
             return of({});
         }
     }
+    
     filterColMagCasaNombre(val: string, pageSize: number = 10): Observable<any> {
         let sUrl = `${environment.dataServiceUrl}/odata/ColmagCasas`;
 

@@ -15,6 +15,10 @@ const routes: Routes = [
         loadChildren: () => import('./colmag.personajes/colmag.personajes.module').then(mod => mod.ColmagPersonajesModule)
     },
     {
+        path: 'COLMAG_Estudiantes',
+        loadChildren: () => import('./colmag.estudiantes/colmag.estudiantes.module').then(mod => mod.ColmagEstudiantesModule)
+    },
+    {
         path: '',
         children: [
         ]

@@ -1,0 +1,82 @@
+<mat-card>
+    <mat-card-header>
+        <div class="d-flex align-items-center m-card">
+            <mat-card-title class="mb-0">{{ 'colmagEstudiantes._titulo' | translate }}</mat-card-title>
+            <span [ngStyle]="{'margin': 'auto'}" ></span>
+            <mat-icon *ngIf="colmagEstudiantesForm.invalid" [matTooltip]="getErrorMessages()">error_outline</mat-icon>
+            <mat-icon mat-dialog-close>close</mat-icon>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="colmagEstudiantesForm" (ngSubmit)="onSubmit(colmagEstudiantesForm.value)" autocomplete="off">
+            <div class="dialog-content">
+                <div class="row">
+                    <div class="col-sm-12 col-12">
+                        <mat-form-field>
+                            <input matInput type="number"
+                                    formControlName="ColmagEstudianteId"
+                                    placeholder="{{ 'colmagEstudiantes.ColmagEstudianteId' | translate }}!" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colmagEstudiantesForm.controls.ColmagEstudianteId.invalid && colmagEstudiantesForm.controls.ColmagEstudianteId.touched">{{ "colmagEstudiantes.ColmagEstudianteIdError" | translate }}</mat-error>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-12">
+                        <mat-form-field>
+                            <input matInput type="text"
+                                    formControlName="ColmagEstudianteNombre"
+                                    placeholder="{{ 'colmagEstudiantes.ColmagEstudianteNombre' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colmagEstudiantesForm.controls.ColmagEstudianteNombre.invalid && colmagEstudiantesForm.controls.ColmagEstudianteNombre.touched">{{ "colmagEstudiantes.ColmagEstudianteNombreError" | translate }}</mat-error>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-12">
+                        <mat-form-field>
+                            <input matInput type="text"
+                                    formControlName="ColmagEstudiantePatronus"
+                                    placeholder="{{ 'colmagEstudiantes.ColmagEstudiantePatronus' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colmagEstudiantesForm.controls.ColmagEstudiantePatronus.invalid && colmagEstudiantesForm.controls.ColmagEstudiantePatronus.touched">{{ "colmagEstudiantes.ColmagEstudiantePatronusError" | translate }}</mat-error>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <mat-form-field>
+                            <input matInput type="number"
+                                    formControlName="ColmagEstudianteEdad"
+                                    placeholder="{{ 'colmagEstudiantes.ColmagEstudianteEdad' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colmagEstudiantesForm.controls.ColmagEstudianteEdad.invalid && colmagEstudiantesForm.controls.ColmagEstudianteEdad.touched">{{ "colmagEstudiantes.ColmagEstudianteEdadError" | translate }}</mat-error>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-12">
+                        <mat-form-field>
+                            <input matInput type="url"
+                                    formControlName="ColmagEstudianteImagen"
+                                    placeholder="{{ 'colmagEstudiantes.ColmagEstudianteImagen' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colmagEstudiantesForm.controls.ColmagEstudianteImagen.invalid && colmagEstudiantesForm.controls.ColmagEstudianteImagen.touched">{{ "colmagEstudiantes.ColmagEstudianteImagenError" | translate }}</mat-error>
+                    </div>
+              </div>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <mat-spinner *ngIf="_proc" [diameter]="30" class="mb-3 mx-auto"></mat-spinner>
+        <button mat-button
+            (click)="onSubmit(colmagEstudiantesForm.value);"
+            [disabled]="!colmagEstudiantesForm.valid">
+            {{ "colmagEstudiantes._guardar" | translate  }}
+        </button>
+        <button mat-button *ngIf="originalColmagEstudiantes._estado === 'O'"
+            (click)="onDelete(colmagEstudiantesForm.value);"
+            [disabled]="!colmagEstudiantesForm.valid">
+            {{ "colmagEstudiantes._eliminar" | translate  }}
+        </button>
+        <button
+            mat-button
+            mat-dialog-close>
+            {{ "colmagEstudiantes._cancelar" | translate  }}
+        </button>
+    </mat-card-actions>
+</mat-card>

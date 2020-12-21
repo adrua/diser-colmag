@@ -35,7 +35,7 @@ resultsError = (err) => {
 };
 
 resultAdd = (res) => {
-    console.log(`personaje aggregada ${res.ColMagPersonajeNombre}`);
+    console.log(`personaje aggregada ${res.data.ColMagPersonajeNombre}`);
 };
 
 resultAddError = (err) => {
@@ -64,9 +64,9 @@ let id = 0
 let personajeAggregar = async (personaje) => {
     let [dia, mes, ano] = personaje.dateOfBirth.split("-");
     let fecha  = (dia) ? `${ano}-${mes}-${dia}` : null;
-
+    ++id;
     const _personaje = {
-        ColMagPersonajeId: ++id,
+        //ColMagPersonajeId: ++id,
         ColMagPersonajeNombre: personaje.name,
         ColMagPersonajeEspecie: personaje.species,
         Genero: personaje.gender,
@@ -85,7 +85,7 @@ let personajeAggregar = async (personaje) => {
         ColMagVaritaMagica: [
             {
                 ColMagPersonajeId: id,
-                ColMagVaritaMagicaId: id,
+                //ColMagVaritaMagicaId: id,
                 ColMagVaritaMagicaMadera: personaje.wand.wood,
                 ColMagVaritaMagicaAlma: personaje.wand.core,
                 ColMagVaritaMagicaLongitud: personaje.wand.length || 0           

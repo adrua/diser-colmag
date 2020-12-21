@@ -242,5 +242,21 @@
 		"_titulo": "VaritaMagica.ColMag",
 		"ColMagVaritaMagicaMadera": "Madera",
 		"ColMagVaritaMagicaMaderaError": "Madera inválido"
+	},
+	"colmagEstudiantes": {
+		"ColmagEstudianteId": "Id",
+		"ColmagEstudianteIdError": "Id inválido",
+		"ColmagEstudianteNombre": "Nombre",
+		"ColmagEstudianteNombreError": "Nombre inválido",
+		"ColmagEstudiantePatronus": "Patronus",
+		"ColmagEstudiantePatronusError": "Patronus inválido",
+		"ColmagEstudianteEdad": "Edad",
+		"ColmagEstudianteEdadError": "Edad inválido",
+		"ColmagEstudianteImagen": "Imagen",
+		"ColmagEstudianteImagenError": "Imagen inválido",
+		"_guardar": "Salvar y Seguir",
+		"_eliminar": "Eliminar",
+		"_cancelar": "Cancelar",
+		"_titulo": "Estudiantes.COLMAG"
 	}
 }
