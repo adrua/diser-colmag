@@ -1,0 +1,171 @@
+<mat-card>
+    <mat-card-header>
+        <div class="d-flex align-items-center m-card">
+            <mat-card-title class="mb-0">{{ 'colMagPersonajes._titulo' | translate }}</mat-card-title>
+            <span [ngStyle]="{'margin': 'auto'}" ></span>
+            <mat-icon *ngIf="colMagPersonajesForm.invalid" [matTooltip]="getErrorMessages()">error_outline</mat-icon>
+            <mat-icon mat-dialog-close>close</mat-icon>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="colMagPersonajesForm" (ngSubmit)="onSubmit(colMagPersonajesForm.value)" autocomplete="off">
+            <div class="dialog-content">
+                <div class="row">
+                    <div class="col-sm-12 col-12">
+                        <mat-form-field>
+                            <input matInput type="text"
+                                    formControlName="ColMagPersonajeNombre"
+                                    placeholder="{{ 'colMagPersonajes.ColMagPersonajeNombre' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colMagPersonajesForm.controls.ColMagPersonajeNombre.invalid && colMagPersonajesForm.controls.ColMagPersonajeNombre.touched">{{ "colMagPersonajes.ColMagPersonajeNombreError" | translate }}</mat-error>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-12">
+                        <mat-form-field>
+                            <input matInput type="text"
+                                    formControlName="ColMagPersonajeEspecie"
+                                    placeholder="{{ 'colMagPersonajes.ColMagPersonajeEspecie' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colMagPersonajesForm.controls.ColMagPersonajeEspecie.invalid && colMagPersonajesForm.controls.ColMagPersonajeEspecie.touched">{{ "colMagPersonajes.ColMagPersonajeEspecieError" | translate }}</mat-error>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <mat-form-field>
+                            <input matInput type="text"
+                                    formControlName="Genero"
+                                    placeholder="{{ 'colMagPersonajes.Genero' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colMagPersonajesForm.controls.Genero.invalid && colMagPersonajesForm.controls.Genero.touched">{{ "colMagPersonajes.GeneroError" | translate }}</mat-error>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-12">
+                        <mat-form-field>
+                            <input matInput type="text"
+                                    formControlName="ColMagCaseaNombre"
+                                    placeholder="{{ 'colMagPersonajes.ColMagCaseaNombre' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colMagPersonajesForm.controls.ColMagCaseaNombre.invalid && colMagPersonajesForm.controls.ColMagCaseaNombre.touched">{{ "colMagPersonajes.ColMagCaseaNombreError" | translate }}</mat-error>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-12">
+                        <mat-form-field>
+                            <input matInput type="text"
+                                    formControlName="ColMagPersonajeFechaNacimiento"
+                                    placeholder="{{ 'colMagPersonajes.ColMagPersonajeFechaNacimiento' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colMagPersonajesForm.controls.ColMagPersonajeFechaNacimiento.invalid && colMagPersonajesForm.controls.ColMagPersonajeFechaNacimiento.touched">{{ "colMagPersonajes.ColMagPersonajeFechaNacimientoError" | translate }}</mat-error>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <mat-form-field>
+                            <input matInput type="number"
+                                    formControlName="AnoNcimiento"
+                                    placeholder="{{ 'colMagPersonajes.AnoNcimiento' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colMagPersonajesForm.controls.AnoNcimiento.invalid && colMagPersonajesForm.controls.AnoNcimiento.touched">{{ "colMagPersonajes.AnoNcimientoError" | translate }}</mat-error>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-12">
+                        <mat-form-field>
+                            <input matInput type="text"
+                                    formControlName="ColMagPersonajeAscendencia"
+                                    placeholder="{{ 'colMagPersonajes.ColMagPersonajeAscendencia' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colMagPersonajesForm.controls.ColMagPersonajeAscendencia.invalid && colMagPersonajesForm.controls.ColMagPersonajeAscendencia.touched">{{ "colMagPersonajes.ColMagPersonajeAscendenciaError" | translate }}</mat-error>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-12">
+                        <mat-form-field>
+                            <input matInput type="text"
+                                    formControlName="ColMagPersonajeColorOjos"
+                                    placeholder="{{ 'colMagPersonajes.ColMagPersonajeColorOjos' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colMagPersonajesForm.controls.ColMagPersonajeColorOjos.invalid && colMagPersonajesForm.controls.ColMagPersonajeColorOjos.touched">{{ "colMagPersonajes.ColMagPersonajeColorOjosError" | translate }}</mat-error>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <mat-form-field>
+                            <input matInput type="text"
+                                    formControlName="ColMagPersonajeColorCabello"
+                                    placeholder="{{ 'colMagPersonajes.ColMagPersonajeColorCabello' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colMagPersonajesForm.controls.ColMagPersonajeColorCabello.invalid && colMagPersonajesForm.controls.ColMagPersonajeColorCabello.touched">{{ "colMagPersonajes.ColMagPersonajeColorCabelloError" | translate }}</mat-error>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-12">
+                        <mat-form-field>
+                            <input matInput type="text"
+                                    formControlName="ColMagPersonajePatronus"
+                                    placeholder="{{ 'colMagPersonajes.ColMagPersonajePatronus' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colMagPersonajesForm.controls.ColMagPersonajePatronus.invalid && colMagPersonajesForm.controls.ColMagPersonajePatronus.touched">{{ "colMagPersonajes.ColMagPersonajePatronusError" | translate }}</mat-error>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-12">
+                        <mat-checkbox
+                                formControlName="ColMagPersonajeEstudiante" >
+                                {{ 'colMagPersonajes.ColMagPersonajeEstudiante' | translate }}:</mat-checkbox>
+                        <mat-error *ngIf="colMagPersonajesForm.controls.ColMagPersonajeEstudiante.invalid && colMagPersonajesForm.controls.ColMagPersonajeEstudiante.touched">{{ "colMagPersonajes.ColMagPersonajeEstudianteError" | translate }}</mat-error>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <mat-checkbox
+                                formControlName="ColMagPersonajeProfesor" >
+                                {{ 'colMagPersonajes.ColMagPersonajeProfesor' | translate }}:</mat-checkbox>
+                        <mat-error *ngIf="colMagPersonajesForm.controls.ColMagPersonajeProfesor.invalid && colMagPersonajesForm.controls.ColMagPersonajeProfesor.touched">{{ "colMagPersonajes.ColMagPersonajeProfesorError" | translate }}</mat-error>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-12">
+                        <mat-form-field>
+                            <input matInput type="text"
+                                    formControlName="ColMagPersonajeActor"
+                                    placeholder="{{ 'colMagPersonajes.ColMagPersonajeActor' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colMagPersonajesForm.controls.ColMagPersonajeActor.invalid && colMagPersonajesForm.controls.ColMagPersonajeActor.touched">{{ "colMagPersonajes.ColMagPersonajeActorError" | translate }}</mat-error>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <mat-checkbox
+                                formControlName="ColMagPersonajeVive" >
+                                {{ 'colMagPersonajes.ColMagPersonajeVive' | translate }}:</mat-checkbox>
+                        <mat-error *ngIf="colMagPersonajesForm.controls.ColMagPersonajeVive.invalid && colMagPersonajesForm.controls.ColMagPersonajeVive.touched">{{ "colMagPersonajes.ColMagPersonajeViveError" | translate }}</mat-error>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-12">
+                        <mat-form-field>
+                            <input matInput type="url"
+                                    formControlName="ColMagPersonajeimagen"
+                                    placeholder="{{ 'colMagPersonajes.ColMagPersonajeimagen' | translate }}:" />
+                        </mat-form-field>
+                        <mat-error *ngIf="colMagPersonajesForm.controls.ColMagPersonajeimagen.invalid && colMagPersonajesForm.controls.ColMagPersonajeimagen.touched">{{ "colMagPersonajes.ColMagPersonajeimagenError" | translate }}</mat-error>
+                    </div>
+              </div>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <mat-spinner *ngIf="_proc" [diameter]="30" class="mb-3 mx-auto"></mat-spinner>
+        <button mat-button
+            (click)="onSubmit(colMagPersonajesForm.value);"
+            [disabled]="!colMagPersonajesForm.valid">
+            {{ "colMagPersonajes._guardar" | translate  }}
+        </button>
+        <button mat-button *ngIf="originalColMagPersonajes._estado === 'O'"
+            (click)="onDelete(colMagPersonajesForm.value);"
+            [disabled]="!colMagPersonajesForm.valid">
+            {{ "colMagPersonajes._eliminar" | translate  }}
+        </button>
+        <button
+            mat-button
+            mat-dialog-close>
+            {{ "colMagPersonajes._cancelar" | translate  }}
+        </button>
+    </mat-card-actions>
+    <mat-card-content *ngIf="true || (colMagPersonajesForm.valid && originalColMagPersonajes._estado === 'O')">
+      <colmag-varitamagica-table [masterRow]="colMagPersonajesForm.value"></colmag-varitamagica-table>
+    </mat-card-content>
+</mat-card>

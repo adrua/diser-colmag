@@ -12,6 +12,10 @@ const routes: Routes = [
       {​​​​​
         path: 'TablasBasicas',
         loadChildren: () => import('../tablasbasicas/tablasbasicas.module').then(mod => mod.TablasBasicasModule)
+      }​​​​​,
+      {​​​​​
+        path: 'Procesos',
+        loadChildren: () => import('../procesos/procesos.module').then(mod => mod.ProcesosModule)
       }​​​​​
     ]
   }

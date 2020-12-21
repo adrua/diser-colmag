@@ -6,7 +6,7 @@ import * as npm  from '../../package.json';
 export const environment = {
   production: false,
   VERSION: npm.version,
-  dataServiceUrl: 'https://localhost:5001'
+  dataServiceUrl: 'http://localhost:5000'
 };
 
 /*

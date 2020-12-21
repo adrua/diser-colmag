@@ -42,8 +42,8 @@ export class FuncionalidadesService {
             "children": [
               {
                 "id": 250,
-                "name": "PCR_SolicitudRepatriaciones",
-                "descripcion": "Solicitud Repatriaciones",
+                "name": "COLMAG_Inscripciones",
+                "descripcion": "Inscripciones",
                 "check": true,
                 "children": []
               }

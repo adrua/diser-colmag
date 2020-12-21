@@ -7,6 +7,10 @@ const routes: Routes = [
         loadChildren: () => import('./colmag.casas/colmag.casas.module').then(mod => mod.ColmagCasasModule)
     },
     {
+        path: 'ColMag_Personajes',
+        loadChildren: () => import('./colmag.personajes/colmag.personajes.module').then(mod => mod.ColmagPersonajesModule)
+    },
+    {
         path: '',
         children: [
         ]

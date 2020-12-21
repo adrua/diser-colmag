@@ -1,6 +1,6 @@
 export class ColmagInscripcionesModel {
     public ColmagInscripcionId: number = 0;
-    public ColmagInscripcionFecha: Date;
+    public ColmagInscripcionFecha: Date = new Date();
     public ColmagInscripcionNombre: string;
     public ColmagInscripcionApellido: string;
     public ColmagInscripcionCedula: number;

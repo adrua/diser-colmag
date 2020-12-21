@@ -1,0 +1,277 @@
+<div class="mat-table-scroll" id="style_menu_desplegable">
+    <mat-table [dataSource]="rows" class="mat-elevation-z8" matSort multiTemplateDataRows [ngStyle]="{'width': 'auto'}">
+        <!-- select! Column -->
+        <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let row; let index = dataIndex;">
+                <mat-icon (click)="$event.stopPropagation(); _expand = !_expand; onSelect($event, row, index);">
+                    {{(selectedRow === row && _expand)?'arrow_left':'arrow_drop_down'}}
+                </mat-icon>
+            </mat-cell>
+        </ng-container>
+        
+        <!-- Nombre: Column -->
+        <ng-container matColumnDef="colMagPersonajeNombre">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeNombre', 'Varchar', 'ColMagPersonajeNombre', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajeNombre" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ColMagPersonajeNombre}}</mat-cell>
+        </ng-container>
+
+        <!-- Especie: Column -->
+        <ng-container matColumnDef="colMagPersonajeEspecie">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeEspecie', 'Varchar', 'ColMagPersonajeEspecie', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajeEspecie" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ColMagPersonajeEspecie}}</mat-cell>
+        </ng-container>
+
+        <!-- Genero: Column -->
+        <ng-container matColumnDef="genero">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'Genero', 'Varchar', 'Genero', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "colMagPersonajes.Genero" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.Genero}}</mat-cell>
+        </ng-container>
+
+        <!-- Casea: Column -->
+        <ng-container matColumnDef="colMagCaseaNombre">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagCaseaNombre', 'Varchar', 'ColMagCaseaNombre', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "colMagPersonajes.ColMagCaseaNombre" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ColMagCaseaNombre}}</mat-cell>
+        </ng-container>
+
+        <!-- Fecha Nacimiento: Column -->
+        <ng-container matColumnDef="colMagPersonajeFechaNacimiento">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeFechaNacimiento', 'Varchar', 'ColMagPersonajeFechaNacimiento', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajeFechaNacimiento" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ColMagPersonajeFechaNacimiento}}</mat-cell>
+        </ng-container>
+
+        <!-- Año Ncimiento: Column -->
+        <ng-container matColumnDef="anoNcimiento">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'AnoNcimiento', 'Number', 'AnoNcimiento', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "colMagPersonajes.AnoNcimiento" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.AnoNcimiento}}</mat-cell>
+        </ng-container>
+
+        <!-- Ascendencia: Column -->
+        <ng-container matColumnDef="colMagPersonajeAscendencia">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeAscendencia', 'Varchar', 'ColMagPersonajeAscendencia', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajeAscendencia" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ColMagPersonajeAscendencia}}</mat-cell>
+        </ng-container>
+
+        <!-- Color Ojos: Column -->
+        <ng-container matColumnDef="colMagPersonajeColorOjos">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeColorOjos', 'Varchar', 'ColMagPersonajeColorOjos', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajeColorOjos" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ColMagPersonajeColorOjos}}</mat-cell>
+        </ng-container>
+
+        <!-- Color Cabello: Column -->
+        <ng-container matColumnDef="colMagPersonajeColorCabello">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeColorCabello', 'Varchar', 'ColMagPersonajeColorCabello', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajeColorCabello" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ColMagPersonajeColorCabello}}</mat-cell>
+        </ng-container>
+
+        <!-- Patronus: Column -->
+        <ng-container matColumnDef="colMagPersonajePatronus">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajePatronus', 'Varchar', 'ColMagPersonajePatronus', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajePatronus" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ColMagPersonajePatronus}}</mat-cell>
+        </ng-container>
+
+        <!-- Estudiante: Column -->
+        <ng-container matColumnDef="colMagPersonajeEstudiante">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeEstudiante', 'Boolean', 'ColMagPersonajeEstudiante', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajeEstudiante" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> 
+                <mat-checkbox disabled [(ngModel)]="row.ColMagPersonajeEstudiante"></mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Profesor: Column -->
+        <ng-container matColumnDef="colMagPersonajeProfesor">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeProfesor', 'Boolean', 'ColMagPersonajeProfesor', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajeProfesor" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> 
+                <mat-checkbox disabled [(ngModel)]="row.ColMagPersonajeProfesor"></mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Actor: Column -->
+        <ng-container matColumnDef="colMagPersonajeActor">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeActor', 'Varchar', 'ColMagPersonajeActor', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajeActor" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ColMagPersonajeActor}}</mat-cell>
+        </ng-container>
+
+        <!-- Vive: Column -->
+        <ng-container matColumnDef="colMagPersonajeVive">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeVive', 'Boolean', 'ColMagPersonajeVive', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajeVive" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> 
+                <mat-checkbox disabled [(ngModel)]="row.ColMagPersonajeVive"></mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <!-- imagen: Column -->
+        <ng-container matColumnDef="colMagPersonajeimagen">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ColMagPersonajeimagen', 'Varchar', 'ColMagPersonajeimagen', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "colMagPersonajes.ColMagPersonajeimagen" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ColMagPersonajeimagen}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="expandedDetail">
+            <mat-cell *matCellDef="let row" [attr.colspan]="displayedColumns.length">
+                <mat-card-content>
+                    <colmag-varitamagica-table [masterRow]="row"></colmag-varitamagica-table>
+                </mat-card-content>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns" class="sticky"></mat-header-row>
+        <mat-row *matRowDef="let row; let even = even; let index = dataIndex; columns: displayedColumns; " 
+            [ngClass]="{'alternate-row-color': even, 'mat-row-select': row === selectedRow}"
+            class="element-row" 
+            [class.expanded]="selectedRow === row" 
+            (click)="onSelect($event, row, index);" 
+            (dblclick)="onSelectAndEdit($event, row, index);"></mat-row>
+        <mat-row *matRowDef="let detailRow; let detailEven = even; let detailIndex = dataIndex; columns: ['expandedDetail']" 
+            [@detailExpand]="detailRow == selectedRow && _expand ? 'expanded' : 'collapsed'" 
+            [ngClass]="{'alternate-row-color': detailEven}"
+            class="detalle-row" 
+            style="overflow: hidden"></mat-row>
+        <mat-menu #menuSearch>
+            <div mat-menu-item mat-filter-item [disableRipple]="true" class="menu-title">
+                {{  "colMagPersonajes." + selectedColumn.name | translate }}
+            </div>
+            <div mat-menu-item mat-filter-item [disableRipple]="true">
+                <mat-form-field (click)="$event.stopPropagation()">
+                <mat-select [panelClass]="'mat-elevation-z10'" placeholder="{{ 'CONDITIONS_LIST.conditions' | translate }}" [(value)]="searchCondition[selectedColumn.name]">
+                    <mat-option *ngFor="let condition of selectedColumn.filter" [value]="condition">{{condition.label}}</mat-option>
+                </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div mat-menu-item mat-filter-item [disableRipple]="true" [ngSwitch]="selectedColumn.type">
+                <mat-form-field (click)="$event.stopPropagation()" *ngSwitchCase="'Date'">
+                    <!--Date-->
+                    <input matInput 
+                        [matDatepicker]="menuSearchDate" 
+                        displayFormat="MMM DD/YYYY"
+                        placeholder="{{ 'CONDITIONS_LIST.value' | translate }}"
+                        [(ngModel)]="searchValue[selectedColumn.name]">
+                    <mat-datepicker-toggle matSuffix [for]="menuSearchDate"></mat-datepicker-toggle>
+                    <mat-datepicker #menuSearchDate></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field (click)="$event.stopPropagation()" *ngSwitchCase="'Boolean'">
+                    <!--Boolean-->
+                    <mat-select matInput type="text" [(value)]="searchValue[selectedColumn.name]"  placeholder="{{ 'CONDITIONS_LIST.value' | translate }}" >
+                        <mat-option [value]="true">{{ 'Main._activo' | translate }}</mat-option>
+                        <mat-option [value]="false">{{ 'Main._inactivo' | translate }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field (click)="$event.stopPropagation()" *ngSwitchDefault>
+                    <!--Number, Varchar-->
+                    <input matInput  *ngSwitchDefault
+                        placeholder="{{ 'CONDITIONS_LIST.value' | translate }}" 
+                        [(ngModel)]="searchValue[selectedColumn.name]">
+                </mat-form-field>
+            </div>
+
+            <div mat-menu-item mat-filter-item [disableRipple]="true">
+                <button mat-raised-button (click)="onClearColumn($event)">{{ 'CONDITIONS_LIST.clear' | translate }}</button>
+                <button mat-raised-button color="primary" (click)="onApplyFilter($event)">{{ 'CONDITIONS_LIST.search' | translate }}</button>
+            </div>
+        </mat-menu>
+    </mat-table>
+</div>    
+<mat-toolbar class="mat-toolbar-opc">
+    <mat-toolbar-row>
+        <mat-icon (click)="onAdd()" title="{{ 'Main._addRow' | translate }}">add</mat-icon>
+        <mat-icon (click)="onEdit()" title="{{ 'Main._editRow' | translate }}">edit</mat-icon>
+        <mat-icon (click)="onRefresh()" title="{{ 'Main._refreshTable' | translate }}">refresh</mat-icon>
+        <mat-icon (click)="onExportExcel($event)" title="{{ 'Main._exportCSV' | translate }}">save_alt</mat-icon>
+        <span class="example-spacer"></span>
+        <mat-paginator #paginator
+                class="paginator" 
+                [length]="resultsLength" 
+                [pageSize]="_pageSize" 
+                [pageSizeOptions]="[5, 10, 25, 100]">
+        </mat-paginator>
+        <div class="mat-paginator" *ngIf="paginator.length > paginator.pageSize">
+            <mat-label>{{ 'PAGINATOR.pageLabel' | translate }} </mat-label>
+            <mat-slider
+                min="0"
+                [max]="(paginator.length / paginator.pageSize).toFixed()"
+                [displayWith]="formatPageLabel"
+                step="1"
+                [(ngModel)]="pageIndex"
+                thumbLabel></mat-slider>
+        </div>
+        <div *ngIf="isLoadingResults" class="ml-2 row">
+            <mat-spinner [diameter]="30"></mat-spinner>
+            <span class="ml-2" style="font-size: 12px">Loading...</span>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

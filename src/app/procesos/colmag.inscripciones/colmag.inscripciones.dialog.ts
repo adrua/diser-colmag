@@ -71,14 +71,9 @@ export class ColmagInscripcionesDialog {
 
                     let validationErrors: any = null;
 
-                    if(!(data.COLMAGInscripcionEdad < 6)) {
+                    if((parseInt(data.ColmagInscripcionEdad) < 6)) {
                         validationErrors = validationErrors || {};
                         validationErrors["COLMAGInscripcionEdad_7"] = "Edad debe ser mayor > 6";
-                    }
-
-                    if(!(data.COLMAGInscripcionFecha < new Date())) {
-                        validationErrors = validationErrors || {};
-                        validationErrors["COLMAGInscripcionFecha_8"] = "Fecha debe ser superior a hoy";
                     }
 
                     return validationErrors;
