@@ -15,7 +15,7 @@ declare var lastError: HttpErrorResponse;
 
 @Component({
   templateUrl: './colmag.profesores.dialog.html',
-  // styleUrls: ['./colmag.profesores.dialog.css'],
+  styleUrls: ['./colmag.profesores.dialog.css'],
   providers: [ColmagProfesoresService]
 })
 export class ColmagProfesoresDialog {
@@ -60,72 +60,7 @@ export class ColmagProfesoresDialog {
                 }
         });
 
-        this.colmagProfesoresForm.valueChanges.subscribe((data) => {
-
-            this.colmagProfesoresForm.patchValue({
-
-            }, {emitEvent: false, onlySelf: true});
-        });
-    }
-
-    onSubmit(formData: ColmagProfesoresModel) {
-        this._proc = true;
-        if (this.colmagProfesoresForm.valid) {
-            formData = Object.assign(ColmagProfesoresModel.clone(this.originalColmagProfesores), formData);
-            this.colmagProfesoresService.save(formData, this.originalColmagProfesores).subscribe((data: any) => {
-                this._proc = false;
-                this._status = !data?.error && !data?.message;
-                this.resultError = null;
-
-                if (this._status) {
-                    formData = Object.assign(this.originalColmagProfesores, formData);
-                    if(formData._estado === 'N') {
-                        formData.ColmagProfesorId = data.ColmagProfesorId;
-                    }
-
-                    this.dialogRef.close({
-                        data: formData
-                    });
-                } else {
-                   this.resultError = data.error?.value || data.message;
-                   this.openNotificationDanger('Error al salvar', this.resultError)
-                }
-            });
-        }
-    }
-
-    onDelete(formData: ColmagProfesoresModel) {
-        if (this.colmagProfesoresForm.valid) {
-            const dialogRef = this.dialog.open(AlertaComponent, {
-               data: {
-                    tipo: 'error', 
-                    titulo: 'Confirmar', 
-                    mensaje: '¿Está seguro de eliminar el registro seleccionado?' 
-               }
-            });
-
-            dialogRef.afterClosed().subscribe(result => {
-                if (result.data) {
-                    this._proc = true;
-                    this.colmagProfesoresService.delete(this.selectedColmagProfesores).subscribe((data: any) => {
-                        this._proc = false;
-                        this._status = !data?.error && !data?.message;
-                        this.resultError = null;
-
-                        if (this._status) {
-                            this.originalColmagProfesores._estado = 'D';
-                            this.dialogRef.close({
-                                data: this.originalColmagProfesores,
-                                delete: true
-                            });
-                        } else {
-                            this.resultError = data.error?.value || data.message;
-                            this.openNotificationDanger('Error al eliminar', this.resultError)
-                        }
-                    });
-                }
-            });
-        }
+        this.colmagProfesoresForm.disable();
     }
 
     openNotificationDanger(titulo: string, mensaje: string) { 

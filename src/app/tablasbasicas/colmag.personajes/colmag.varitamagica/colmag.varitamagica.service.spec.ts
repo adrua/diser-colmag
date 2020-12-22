@@ -39,10 +39,9 @@ describe('ColMagVaritaMagicaService', () => {
 
         let row = new ColMagVaritaMagicaModel(rowBase);
 
-        service.getById(row.ColMagPersonajeId, row.ColMagVaritaMagicaId).subscribe((value) => {
+        service.getById(row).subscribe((value) => {
 			    expect(value.ColMagPersonajeId).toBe(row.ColMagPersonajeId);
 			    expect(value.ColMagVaritaMagicaId).toBe(row.ColMagVaritaMagicaId);
-			    expect(value.ColMagVaritaMagicaMadera).toBe(row.ColMagVaritaMagicaMadera);
 			    expect(value.ColMagVaritaMagicaAlma).toBe(row.ColMagVaritaMagicaAlma);
 			    expect(value.ColMagVaritaMagicaLongitud).toBe(row.ColMagVaritaMagicaLongitud);
           done();
@@ -60,7 +59,7 @@ describe('ColMagVaritaMagicaService', () => {
 
         let row = new ColMagVaritaMagicaModel(rowBase);
 
-        service.getById(row.ColMagPersonajeId, row.ColMagVaritaMagicaId).subscribe(
+        service.getById(row).subscribe(
             (value) => {
                 console.log(`#getById.Error: ${JSON.stringify(value)}`);
                 expect(value.statusText).toEqual('Not Found')
@@ -99,7 +98,7 @@ describe('ColMagVaritaMagicaService', () => {
             direction: ''
         };
 
-        service.getList(filter, <any>paginator, <any>sort).subscribe(value => {
+        service.getList(<any>rowBase, filter, <any>paginator, <any>sort).subscribe(value => {
             let result = value?.value;
             expect(result?.length).toEqual(2);
             done();
@@ -116,7 +115,6 @@ describe('ColMagVaritaMagicaService', () => {
 
         //Add - ColMagVaritaMagica
         service.save(row, row).subscribe(value => {
-			    expect(value.ColMagVaritaMagicaMadera).toBe(row.ColMagVaritaMagicaMadera);
 			    expect(value.ColMagVaritaMagicaAlma).toBe(row.ColMagVaritaMagicaAlma);
 			    expect(value.ColMagVaritaMagicaLongitud).toBe(row.ColMagVaritaMagicaLongitud);
             done();
@@ -133,7 +131,6 @@ describe('ColMagVaritaMagicaService', () => {
 
         //Update - ColMagVaritaMagica
         service.save(row, row).subscribe(value => {
-			    expect(value.ColMagVaritaMagicaMadera).toBe(row.ColMagVaritaMagicaMadera);
 			    expect(value.ColMagVaritaMagicaAlma).toBe(row.ColMagVaritaMagicaAlma);
 			    expect(value.ColMagVaritaMagicaLongitud).toBe(row.ColMagVaritaMagicaLongitud);
             done();

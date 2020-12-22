@@ -15,7 +15,7 @@ declare var lastError: HttpErrorResponse;
 
 @Component({
   templateUrl: './colmag.estudiantes.dialog.html',
-  // styleUrls: ['./colmag.estudiantes.dialog.css'],
+  styleUrls: ['./colmag.estudiantes.dialog.css'],
   providers: [ColmagEstudiantesService]
 })
 export class ColmagEstudiantesDialog {
@@ -62,12 +62,6 @@ export class ColmagEstudiantesDialog {
 
         this.colmagEstudiantesForm.disable();
 
-        this.colmagEstudiantesForm.valueChanges.subscribe((data) => {
-
-            this.colmagEstudiantesForm.patchValue({
-
-            }, {emitEvent: false, onlySelf: true});
-        });
     }
 
     openNotificationDanger(titulo: string, mensaje: string) { 

@@ -88,7 +88,13 @@ export class ColmagEstudiantesTable implements AfterViewInit {
                   generate: this.searchCondition[filterKey].filter
                 } 
 
-                _filter += ` and ${filter.generate(filter)}`;
+                if(filterKey.endsWith("Edad") )
+                {
+                  let __filter = filter.generate(filter).replace(filter.column, `(${new Date().getFullYear()} sub ColmagPersonajeAnoNacimiento)`);
+                  _filter += ` and (${__filter})`;
+                } else  {
+                  _filter += ` and ${filter.generate(filter)}`;
+                }
               }
               _filter = (_filter) ? _filter.substr(5) : _filter;
 

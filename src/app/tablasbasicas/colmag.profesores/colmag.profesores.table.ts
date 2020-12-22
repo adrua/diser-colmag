@@ -88,7 +88,13 @@ export class ColmagProfesoresTable implements AfterViewInit {
                   generate: this.searchCondition[filterKey].filter
                 } 
 
-                _filter += ` and ${filter.generate(filter)}`;
+                if(filterKey.endsWith("Edad") )
+                {
+                  let __filter = filter.generate(filter).replace(filter.column, `(${new Date().getFullYear()} sub ColmagPersonajeAnoNacimiento)`);
+                  _filter += ` and (${__filter})`;
+                } else  {
+                  _filter += ` and ${filter.generate(filter)}`;
+                }
               }
               _filter = (_filter) ? _filter.substr(5) : _filter;
 
@@ -116,6 +122,7 @@ export class ColmagProfesoresTable implements AfterViewInit {
               });
             })
           ).subscribe(data => {
+            data = data.map((row) => row = new ColmagProfesoresModel(row));
             this.rows = [...data];
             this.originals = data;
           });
@@ -222,10 +229,6 @@ export class ColmagProfesoresTable implements AfterViewInit {
                 return new ColmagProfesoresModel().fromClipboard(line);
             });
 
-            this.colmagProfesoresService.saveRows(rows).subscribe((data: any) => {
-                console.log('Saved rows for ColmagProfesores');
-                this.paginator.page.emit();
-            });
         });
     }
 

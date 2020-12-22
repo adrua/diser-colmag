@@ -121,8 +121,6 @@ describe('ColMagVaritaMagicaDialog', () => {
         let row = mockService.rows[0];
         expect(row.ColMagPersonajeId).toBe(rowBase.ColMagPersonajeId);
         expect(row.ColMagVaritaMagicaId).toBe(rowBase.ColMagVaritaMagicaId);
-        expect(row.ColMagVaritaMagica).toBe(rowBase.ColMagVaritaMagica);
-        expect(row.ColMagVaritaMagicaMadera).toBe(rowBase.ColMagVaritaMagicaMadera);
         expect(row.ColMagVaritaMagicaAlma).toBe(rowBase.ColMagVaritaMagicaAlma);
         expect(row.ColMagVaritaMagicaLongitud).toBe(rowBase.ColMagVaritaMagicaLongitud);
 
@@ -153,8 +151,6 @@ describe('ColMagVaritaMagicaDialog', () => {
         let row = mockService.rows[0];
         expect(row.ColMagPersonajeId).toBe(rowBase.ColMagPersonajeId);
         expect(row.ColMagVaritaMagicaId).toBe(rowBase.ColMagVaritaMagicaId);
-        expect(row.ColMagVaritaMagica).toBe(rowBase.ColMagVaritaMagica);
-        expect(row.ColMagVaritaMagicaMadera).toBe(rowBase.ColMagVaritaMagicaMadera);
         expect(row.ColMagVaritaMagicaAlma).toBe(rowBase.ColMagVaritaMagicaAlma);
         expect(row.ColMagVaritaMagicaLongitud).toBe(rowBase.ColMagVaritaMagicaLongitud);
 

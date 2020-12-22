@@ -8,71 +8,70 @@
         </div>
     </mat-card-header>
     <mat-card-content>
-        <form [formGroup]="colmagProfesoresForm" (ngSubmit)="onSubmit(colmagProfesoresForm.value)" autocomplete="off">
+        <form [formGroup]="colmagProfesoresForm" autocomplete="off">
             <div class="dialog-content">
                 <div class="row">
-                    <div class="col-sm-12 col-12">
-                        <mat-form-field>
-                            <input matInput type="number"
-                                    formControlName="ColmagProfesorId"
-                                    placeholder="{{ 'colmagProfesores.ColmagProfesorId' | translate }}!" />
-                        </mat-form-field>
-                        <mat-error *ngIf="colmagProfesoresForm.controls.ColmagProfesorId.invalid && colmagProfesoresForm.controls.ColmagProfesorId.touched">{{ "colmagProfesores.ColmagProfesorIdError" | translate }}</mat-error>
+                    <div class="col-sm-8 col-8">
+                        <div class="row">
+                            <div class="col-sm-12 col-12">
+                                <mat-form-field>
+                                    <input matInput type="number"
+                                            formControlName="ColmagProfesorId"
+                                            placeholder="{{ 'colmagProfesores.ColmagProfesorId' | translate }}!" />
+                                </mat-form-field>
+                                <mat-error *ngIf="colmagProfesoresForm.controls.ColmagProfesorId.invalid && colmagProfesoresForm.controls.ColmagProfesorId.touched">{{ "colmagProfesores.ColmagProfesorIdError" | translate }}</mat-error>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-12">
+                                <mat-form-field>
+                                    <input matInput type="text"
+                                            formControlName="ColmagProfesorNombre"
+                                            placeholder="{{ 'colmagProfesores.ColmagProfesorNombre' | translate }}:" />
+                                </mat-form-field>
+                                <mat-error *ngIf="colmagProfesoresForm.controls.ColmagProfesorNombre.invalid && colmagProfesoresForm.controls.ColmagProfesorNombre.touched">{{ "colmagProfesores.ColmagProfesorNombreError" | translate }}</mat-error>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field>
+                                    <input matInput type="text"
+                                            formControlName="ColmagProfesorPatronus"
+                                            placeholder="{{ 'colmagProfesores.ColmagProfesorPatronus' | translate }}:" />
+                                </mat-form-field>
+                                <mat-error *ngIf="colmagProfesoresForm.controls.ColmagProfesorPatronus.invalid && colmagProfesoresForm.controls.ColmagProfesorPatronus.touched">{{ "colmagProfesores.ColmagProfesorPatronusError" | translate }}</mat-error>
+                            </div>
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field>
+                                    <input matInput type="number"
+                                            formControlName="ColmagProfesorEdad"
+                                            placeholder="{{ 'colmagProfesores.ColmagProfesorEdad' | translate }}:" />
+                                </mat-form-field>
+                                <mat-error *ngIf="colmagProfesoresForm.controls.ColmagProfesorEdad.invalid && colmagProfesoresForm.controls.ColmagProfesorEdad.touched">{{ "colmagProfesores.ColmagProfesorEdadError" | translate }}</mat-error>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-12">
+                                <mat-form-field>
+                                    <input matInput type="url"
+                                            formControlName="ColmagProfesorImagen"
+                                            placeholder="{{ 'colmagProfesores.ColmagProfesorImagen' | translate }}:" />
+                                </mat-form-field>
+                                <mat-error *ngIf="colmagProfesoresForm.controls.ColmagProfesorImagen.invalid && colmagProfesoresForm.controls.ColmagProfesorImagen.touched">{{ "colmagProfesores.ColmagProfesorImagenError" | translate }}</mat-error>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-4">
+                        <div class="img-container">
+                            <img [src]="colmagProfesoresForm.controls.ColmagProfesorImagen.value" />
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12 col-12">
-                        <mat-form-field>
-                            <input matInput type="text"
-                                    formControlName="ColmagProfesorNombre"
-                                    placeholder="{{ 'colmagProfesores.ColmagProfesorNombre' | translate }}:" />
-                        </mat-form-field>
-                        <mat-error *ngIf="colmagProfesoresForm.controls.ColmagProfesorNombre.invalid && colmagProfesoresForm.controls.ColmagProfesorNombre.touched">{{ "colmagProfesores.ColmagProfesorNombreError" | translate }}</mat-error>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6 col-12">
-                        <mat-form-field>
-                            <input matInput type="text"
-                                    formControlName="ColmagProfesorPatronus"
-                                    placeholder="{{ 'colmagProfesores.ColmagProfesorPatronus' | translate }}:" />
-                        </mat-form-field>
-                        <mat-error *ngIf="colmagProfesoresForm.controls.ColmagProfesorPatronus.invalid && colmagProfesoresForm.controls.ColmagProfesorPatronus.touched">{{ "colmagProfesores.ColmagProfesorPatronusError" | translate }}</mat-error>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <mat-form-field>
-                            <input matInput type="number"
-                                    formControlName="ColmagProfesorEdad"
-                                    placeholder="{{ 'colmagProfesores.ColmagProfesorEdad' | translate }}:" />
-                        </mat-form-field>
-                        <mat-error *ngIf="colmagProfesoresForm.controls.ColmagProfesorEdad.invalid && colmagProfesoresForm.controls.ColmagProfesorEdad.touched">{{ "colmagProfesores.ColmagProfesorEdadError" | translate }}</mat-error>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12 col-12">
-                        <mat-form-field>
-                            <input matInput type="url"
-                                    formControlName="ColmagProfesorImagen"
-                                    placeholder="{{ 'colmagProfesores.ColmagProfesorImagen' | translate }}:" />
-                        </mat-form-field>
-                        <mat-error *ngIf="colmagProfesoresForm.controls.ColmagProfesorImagen.invalid && colmagProfesoresForm.controls.ColmagProfesorImagen.touched">{{ "colmagProfesores.ColmagProfesorImagenError" | translate }}</mat-error>
-                    </div>
-              </div>
             </div>
         </form>
     </mat-card-content>
     <mat-card-actions>
         <mat-spinner *ngIf="_proc" [diameter]="30" class="mb-3 mx-auto"></mat-spinner>
-        <button mat-button
-            (click)="onSubmit(colmagProfesoresForm.value);"
-            [disabled]="!colmagProfesoresForm.valid">
-            {{ "colmagProfesores._guardar" | translate  }}
-        </button>
-        <button mat-button *ngIf="originalColmagProfesores._estado === 'O'"
-            (click)="onDelete(colmagProfesoresForm.value);"
-            [disabled]="!colmagProfesoresForm.valid">
-            {{ "colmagProfesores._eliminar" | translate  }}
-        </button>
         <button
             mat-button
             mat-dialog-close>

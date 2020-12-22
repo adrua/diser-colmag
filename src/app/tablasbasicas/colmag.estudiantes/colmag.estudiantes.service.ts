@@ -48,7 +48,7 @@ export class ColmagEstudiantesService {
         params["$filter"] = `(ColmagPersonajeEstudiante eq true)`;
         if (filter) {
             filter = filter.replace(/ColmagEstudiante/g, "ColmagPersonaje")
-            params["$filter"] = `and (${filter})`;
+            params["$filter"] += `and (${filter})`;
         }
           
         if (paginator.pageIndex) {
@@ -58,8 +58,9 @@ export class ColmagEstudiantesService {
         params["$top"] = paginator.pageSize;
         
         if (sort.active) {
-            filter = filter.replace(/ColmagEstudiante/g, "ColmagPersonaje")
-            params["$orderby"] = `${sort.active || ""} ${sort.direction || ""}`;
+            let columns = sort.active.replace(/ColmagEstudiante/gi, "ColmagPersonaje")
+            columns = sort.active.replace(/ColmagEstudianteEdad/gi, "ColmagPersonajeAnoNacimiento")
+            params["$orderby"] = `${columns || ""} ${sort.direction || ""}`;
         }
         
         params["$count"] = "true";

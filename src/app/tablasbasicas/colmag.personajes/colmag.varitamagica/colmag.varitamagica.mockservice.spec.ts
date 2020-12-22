@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { ColMagVaritaMagicaModel } from '../colmag.personajes.model';
+import { ColMagPersonajesModel } from '../colmag.personajes.model';
 import { ColMagVaritaMagicaModel } from './colmag.varitamagica.model';
 
 declare var lastError;

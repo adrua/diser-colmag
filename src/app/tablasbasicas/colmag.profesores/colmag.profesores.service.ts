@@ -15,11 +15,11 @@ export class ColmagProfesoresService {
     private colmagProfesoresUrl = '';  // URL to web api
 
     constructor(private http: HttpClient) {
-        this.colmagProfesoresUrl = `${environment.dataServiceUrl}/odata/ColmagProfesores`;
+        this.colmagProfesoresUrl = `${environment.dataServiceUrl}/odata/ColmagPersonajes`;
     }
 
     getById(colmagProfesorId: number): Observable<any> {
-        const sUrl = `${this.colmagProfesoresUrl}(ColmagProfesorId=${colmagProfesorId})`;
+        const sUrl = `${this.colmagProfesoresUrl}(ColmagPersonajeId=${colmagProfesorId})`;
 
         return this.http.get<any>(sUrl).pipe(
             retry(3),
@@ -30,6 +30,7 @@ export class ColmagProfesoresService {
 
     getAll(): Observable<any> {
         const params: any = {};		 
+        params["$filter"] = `ColmagPersonajeProfesor eq true`;
 
         return this.http.get<any>(this.colmagProfesoresUrl, { params }).pipe(
             retry(3),
@@ -44,8 +45,10 @@ export class ColmagProfesoresService {
 
         const params: any = {};
 
+        params["$filter"] = `(ColmagPersonajeProfesor eq true)`;
         if (filter) {
-            params["$filter"] = filter;
+            filter = filter.replace(/ColmagProfesor/gi, "ColmagPersonaje")
+            params["$filter"] += ` and (${filter})`;
         }
           
         if (paginator.pageIndex) {
@@ -55,7 +58,9 @@ export class ColmagProfesoresService {
         params["$top"] = paginator.pageSize;
         
         if (sort.active) {
-            params["$orderby"] = `${sort.active || ""} ${sort.direction || ""}`;
+            let columns = sort.active.replace(/ColmagProfesor/gi, "ColmagPersonaje")
+            columns = sort.active.replace(/ColmagProfesorEdad/gi, "ColmagPersonajeAnoNacimiento")
+            params["$orderby"] = `${columns || ""} ${sort.direction || ""}`;
         }
         
         params["$count"] = "true";
@@ -65,68 +70,6 @@ export class ColmagProfesoresService {
             tap(row => this.log("fetched ColmagProfesores")),
             catchError((error) => this.handleError('getColmagProfesoresList', error))
         );
-    }
-
-    add(row: ColmagProfesoresModel): Observable<ColmagProfesoresModel> {
-        return this.http.post<ColmagProfesoresModel>(this.colmagProfesoresUrl, ColmagProfesoresModel.clone(row)).pipe(
-            retry(3),
-            tap((_row: ColmagProfesoresModel) => this.log(`added ColmagProfesores w/ id=${_row.ColmagProfesorId}`)),
-            catchError((error) => this.handleError("addColmagProfesores", error))
-        );
-    }
-
-    update(row: ColmagProfesoresModel, original: ColmagProfesoresModel): Observable<ColmagProfesoresModel> {
-        const sUrl = `${this.colmagProfesoresUrl}(ColmagProfesorId=${original.ColmagProfesorId})`;
-    
-        return this.http.patch<ColmagProfesoresModel>(sUrl, ColmagProfesoresModel.clone(row)).pipe(
-            retry(3),
-            tap(_ => this.log(`update ColmagProfesores id=${row.ColmagProfesorId}`)),
-            catchError((error) => this.handleError("updateColmagProfesores", error))
-        );
-    }
-
-    save(row: ColmagProfesoresModel, original: ColmagProfesoresModel): Observable<ColmagProfesoresModel> {
-        if (row._estado === "N") {
-            return this.add(row);
-        } else {
-            return this.update(row, original);
-        }
-    }
-
-    delete(row: ColmagProfesoresModel): Observable<any> {
-        const sUrl = `${this.colmagProfesoresUrl}(ColmagProfesorId=${row.ColmagProfesorId})`;
-
-        return this.http.delete(sUrl).pipe(
-            retry(3),
-            tap(_ => this.log(`filter ColmagProfesores id=${row.ColmagProfesorId}`)),
-            catchError((error) => this.handleError("deleteColmagProfesores", error))
-        );
-    }
-
-    saveRows(rows: Array<ColmagProfesoresModel>): Observable<any> {
-        const _rows = rows.map((row) => ColmagProfesoresModel.clone(row));
-        return this.http.post<any>(this.colmagProfesoresUrl, _rows).pipe(
-            retry(3),
-            tap((rrows: ColmagProfesoresModel) => this.log(`pasted rows in ColmagProfesores `)),
-            catchError((error) => this.handleError("addColmagProfesores", error))
-        );
-    }
-
-    batch(row: ColmagProfesoresModel, detailRows: Array<any>): Observable<any> {
-        if (detailRows.length) {
-            detailRows.forEach((detailRow) => {
-                detailRow.body.ColmagProfesorId = row.ColmagProfesorId;
-
-            });
-
-            return this.http.post<any>(`${environment.dataServiceUrl}/odata/$batch`,  { requests: detailRows }).pipe(
-                retry(3),
-                tap((rrows: ColmagProfesoresModel) => this.log(`executed batch in ColmagProfesores `)),
-                catchError((error) => this.handleError("BatchColmagProfesores", error))
-            );
-        } else {
-            return of({});
-        }
     }
 
     private handleError(operation = "operation", result?: any) {

@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 
 import { ColMagPersonajesModule } from '../colmag.personajes.module';
-import { ColMagVaritaMagicaModel } from '../colmag.personajes/colmag.personajes.model';
 import { ColMagVaritaMagicaModel } from './colmag.varitamagica.model';
 import { ColMagVaritaMagicaService } from './colmag.varitamagica.service';
 import { ColMagVaritaMagicaMockService } from './colmag.varitamagica.mockservice.spec';
@@ -37,7 +36,7 @@ describe('ColMagVaritaMagica_Table', () => {
             imports: [
                 HttpClientModule,
                 BrowserAnimationsModule,
-                ColMagVaritaMagicaModule
+                ColMagPersonajesModule
             ]
         });
 

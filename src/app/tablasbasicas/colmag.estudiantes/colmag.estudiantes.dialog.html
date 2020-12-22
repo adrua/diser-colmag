@@ -59,13 +59,15 @@
                                 </mat-form-field>
                                 <mat-error *ngIf="colmagEstudiantesForm.controls.ColmagEstudianteImagen.invalid && colmagEstudiantesForm.controls.ColmagEstudianteImagen.touched">{{ "colmagEstudiantes.ColmagEstudianteImagenError" | translate }}</mat-error>
                             </div>
+                        </div>
                     </div>
                     <div class="col-sm-4 col-4">
-                        <img [src]="colmagEstudiantesForm.controls.ColmagEstudianteImagen.value" />
+                        <div class="img-container">
+                            <img [src]="colmagEstudiantesForm.controls.ColmagEstudianteImagen.value" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </form>
     </mat-card-content>
     <mat-card-actions>

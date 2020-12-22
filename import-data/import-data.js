@@ -104,7 +104,7 @@ let personajeAggregar = async (personaje) => {
 
 let cargarPersonajes = async () => {
     try {
-        let response =  await axios.get(`http://hp-api.herokuapp.com/api/characters/students`);
+        let response =  await axios.get(`http://hp-api.herokuapp.com/api/characters/staff`);
         results(response);
     } catch(err) {
         resultsError(err);
